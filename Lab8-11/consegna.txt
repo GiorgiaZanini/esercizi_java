@@ -1,0 +1,65 @@
+Si consideri la seguente interfaccia, che specifica un giocatore di calcio:
+
+public interface SoccerPlayer {
+  String toString();  // ritorna il nome del giocatore
+  boolean canUseHands();  // determina se il giocatore può usare le mani
+}
+
+
+Si completi la seguente implementazione di SoccerPlayer:
+
+public abstract class AbstractSoccerPlayer implements SoccerPlayer {
+  ...
+  protected AbstractSoccerPlayer(String name) {
+    ...
+  }
+
+  public final String toString() {
+    ...
+  }
+}
+
+E' possibile aggiungere campi o metodi, ma solo private.
+Si noti che il metodo canUseHands() non è ancora implementato in AbstractSoccerPlayer, per cui tale classe deve essere abstract.
+
+
+Si realizzino quattro sottoclassi concrete di AbstractSoccerPlayer, chiamate rispettivamente Forward, Midfield, Defence e GoalKeeper.
+Il costruttore di tali classi richiede il nome del giocatore come parametro.
+Solo il GoalKeeper può usare le mani nel gioco del calcio.
+
+
+Si completi la seguente classe, che implementa una formazione del gioco del calcio, cioè l'insieme degli 11 giocatori che formano la squadra durante una partita.
+
+public class Formation {
+  ...
+  public Formation(SoccerPlayer[] players) {
+    ...
+    if (!isValid())
+      throw new IllegalArgumentException("invalid formation");
+  }
+
+  protected boolean isValid() {
+    // ritorna true se e solo se la formazione è fatta da 11 giocatori, di cui esattamente uno è un portiere
+  }
+
+  protected SoccerPlayer[] getPlayers() {
+    // ritorna i giocatori di questa formazione
+  }
+
+  public final String toString() {
+    // ritorna i nomi dei giocatori della formazione, separati da virgola
+  }
+}
+
+
+Si implementi una sottoclasse concreta di Formation, chiamata Formation433, che,
+per essere valida, deve essere composta da 4 difensori, 3 centrocampisti e 3 attaccanti, oltre ovviamente a un portiere.
+L'implementazione di isValid() dovrà quindi cambiare per questa sottoclasse.
+
+
+Si scriva una classe di prova Main con un metodo main() che crea 11 giocatori:
+4 difensori (Alex Sandro, Rugani, Chiellini e Dani Alves),
+3 centrocampisti (Fabinho, Iniesta, Pjanic),
+3 attaccanti (Dybala, Higuain, Bernardeschi)
+e un portiere (Szczesny).
+Poi crea una Formation433, passando tali giocatori al costruttore, e la stampa.

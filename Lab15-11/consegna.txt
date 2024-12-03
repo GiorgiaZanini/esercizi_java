@@ -1,0 +1,86 @@
+1.    Si crei un progetto Eclipse e si copi al suo interno la seguente interfaccia, che rappresenta un numero non negativo, in una qualsiasi base di numerazione:
+
+    public interface Number extends Comparable<Number> {
+      int getValue(); // restituisce il valore di questo numero
+    }
+
+
+2.    Si completi la seguente implementazione astratta di un Number, che fornisce le funzionalità comuni a tutti i numeri,
+    cioè il controllo sulla non negatività del valore, l’accesso al valore, la traduzione in stringa e il metodo per il test di uguaglianza:
+
+    public abstract class AbstractNumber implements Number {
+      private final int value;
+
+      protected AbstractNumber(int value) {
+        // se value è negativo, esegue throw new IllegalArgumentException(); altrimenti inizializza il campo value
+        ...
+      }
+
+      // restituisce il valore di questo numero
+      public final int getValue() { ... }
+
+      // restituice la base di numerazione di questo numero
+      protected abstract int getBase();
+
+      // restituisce il carattere che rappresenta la cifra "digit" nella base di numerazione
+      // di questo numero. Sarà sempre vero che 0 <= digit < getBase();
+      // per esempio, in base sedici si avrà getCharForDigit(10) == 'A' e
+      // in base otto si avrà getCharForDigit(7) == '7'
+      protected abstract char getCharForDigit(int digit);
+
+      // restituisce una stringa che rappresenta il numero nella sua base di numerazione
+      public String toString() { ... }
+
+      public final boolean equals(Object other) {
+        // due numeri sono uguali se e solo se hanno lo stesso valore
+        ...
+      }
+
+      public final int compareTo(Number other) {
+        // l'ordinamento fra i Number è quello crescente per valore
+        ...
+      }
+    }
+
+
+3.    Si scrivano le sottoclassi concrete DecimalNumber, BinaryNumber, OctalNumber ed HexNumber di AbstractNumber,
+    che rappresentano, rispettivamente, un numero in base 10, 2, 8 e 16.
+    Queste classi si instanziano con il loro costruttore, a cui viene passato il valore del numero.
+    Non si ridefinisca, in queste quattro sottoclassi, il metodo toString():
+    quello ereditato da AbstractNumber dovrà funzionare per tutte queste sottoclassi, traducendo il valore del numero nella giusta base di numerazione.
+
+
+4.    Nella codifica binaria con parità, un numero binario viene esteso con un’ulteriore cifra binaria di controllo,
+    in modo da rendere pari il numero totale di cifre 1.
+    Se quindi il numero binario aveva una quantità pari di 1, si aggiungerà una cifra di controllo 0.
+    Se invece il numero binario aveva una quantità dispari di 1, si aggiungerà una cifra di controllo 1.
+    Questa modifica riduce il rischio di trasmissione di dati corrotti, permettendo di implementare un rudimentale sistema di rilevazione dell’errore.
+    Si implementi una sottoclasse concreta BinaryNumberWithParity di BinaryNumber, ridefinendo solo il metodo toString() in modo da aggiungere in fondo la cifra di controllo opportuna.
+
+
+5.    Nella codifica in base 58, si utilizzano 58 cifre diverse, scelte fra i numeri arabi e le lettere inglesi maiuscole e minuscole.
+    Si evitano i caratteri 0OIl, che potrebbero essere confusi a video, perché graficamente simili.
+    Si implementi una sottoclasse concreta Base58Number di AbstractNumber, in modo da implementare questa numerazione in base 58.
+    Le 58 cifre sono quindi 123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz.
+    Non si ridefinisca il metodo toString() ereditato da AbstractNumber.
+
+
+6.    Si scriva una classe di prova MainNumbers con un metodo main() che chiede all'utente di inserire un numero non negativo n,
+    quindi crea il numero n in base 10, poi in base 2, poi in base 2 con parità, poi in base 8, poi in base 16 e infine in base 58, stampando tutti tali numeri.
+    Se per esempio l'utente inserisse il numero 1234567, il main() dovrà stampare:
+    1234567
+    100101101011010000111
+    1001011010110100001111
+    4553207
+    12D687
+    7Kze
+
+
+7.    Si scriva una classe di prova MainNumbersSort con un metodo main() che crea un array di Number contenente esattamente sei elementi:
+    2024 in base 10
+    113 in base 2
+    158 in base 2 con parità
+    827 in base 8
+    2066 in base 16
+    8092 in base 58
+    Quindi ordina l'array con java.util.Arrays.sort(...) e lo stampa sfruttando java.util.Arrays.toString(...).

@@ -1,0 +1,94 @@
+1.    Si completi la seguente classe, che rappresenta una lista non vuota di T:
+
+    package it.univr.lists;
+
+    import java.io.IOException;
+
+    public class List<T> {
+      private final T head;
+      private final List<T> tail;
+
+      // crea una lista con la testa e la coda indicate
+      public List(T head, List<T> tail) {
+        this.head = head;
+        this.tail = tail;
+      }
+
+      // crea una lista contenente la testa indicata, seguita dagli elementi indicati
+      public List(T head, T... elements) {
+        ...
+      }
+
+      // restituisce una descrizione di questa lista, fatta dai toString()
+      // dei suoi elementi separati da virgole
+      public String toString() {
+        ...
+      }
+
+      // restituisce il numero di elementi di questa lista
+      public int length() {
+        ...
+      }
+
+      // scrive gli elementi di questa lista (cioè il loro toString())
+      // dentro il file testuale col nome indicato (un PrintWriter vi aiuterà)
+      public void dump(String fileName) throws IOException {
+        ...
+      }
+    }
+
+
+2.    Si completi la seguente sottoclasse, che rappresenta una lista di interi:
+
+    package it.univr.lists;
+
+    import java.io.IOException;
+
+    public class IntList extends List<Integer> {
+
+      public IntList(Integer head, IntList tail) {
+        ...
+      }
+
+      public IntList(Integer head, Integer... elements) {
+        ...
+      }
+
+      // restituisce una lista di interi letta dal file testuale indicato;
+      // in caso di errore di lettura, lancia una IOException; uno Scanner vi aiuterà
+      public static IntList readFrom(String fileName) throws IOException {
+        ...
+      }
+    }
+
+
+3.    Se tutto è corretto, il seguente main (già fatto, da non modificare):
+
+    package it.univr.lists;
+
+    import java.io.IOException;
+
+    public class Main {
+      public static void main(String[] args) {
+        try {
+          List<String> l1 = new List<String>("hello", "how", "are", "you?");
+          System.out.println(l1 + " di lunghezza " + l1.length());
+          l1.dump("l1.txt");
+          IntList l2 = new IntList(11, 13, 42, 9, -5, 17, 13);
+          System.out.println(l2 + " di lunghezza " + l2.length());
+          l2.dump("l2.txt");
+          IntList l3 = IntList.readFrom("l2.txt");
+          System.out.println(l3 + " di lunghezza " + l3.length());
+          IntList.readFrom("l1.txt"); // fallisce perché l1.txt contiene stringhe, non interi
+        }
+        catch (IOException e) {
+          System.out.println("Errore di I/O");
+        }
+      }
+    }
+
+    stamperà:
+    hello, how, are, you? di lunghezza 4
+    11, 13, 42, 9, -5, 17, 13 di lunghezza 7
+    11, 13, 42, 9, -5, 17, 13 di lunghezza 7
+    Errore di I/O

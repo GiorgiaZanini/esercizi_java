@@ -1,0 +1,40 @@
+Si crei un package it.univr.figures. Al suo interno, si realizzi il codice descritto sotto, in cui tutti i campi devono
+essere private per rispettare l'incapsulazione.
+
+
+Si scriva un'enumerazione Color che enumera cinque colori di vostra scelta, incluso il verde.
+
+Si scriva una classe Figure che rappresenta una figura geometrica colorata. Tale classe deve avere un costruttore che
+riceve un Color. Deve avere un metodo double perimeter() e un metodo double area(); fate ritornare ad entrambi 0.
+Inoltre deve avere un metodo String toString() che ritorna la stringa "area: A, perimeter: P, color: C", dove A è
+l'area della figura, P è il perimetro della figura e C è il colore della figura. Infine, deve avere un metodo accessore
+protected per il colore.
+
+Si scriva una sottoclasse Rectangle di Figure che rappresenta un rettangolo, con un
+costruttore che riceve colore, base e altezza double del rettangolo e in cui i metodi
+double perimeter() e double area() sono ridefiniti in modo da ritornare perimetro ed
+area del rettangolo, rispettivamente. Il metodo String toString() deve essere ridefinito
+in modo da ritornare la stringa "Rectangle of " seguita dalla chiamata al toString()
+della superclasse.
+
+Si scriva una sottoclasse Circle di Figure che rappresenta un cerchio,
+con un costruttore che riceve colore e raggio double del cerchio e in cui i metodi
+double perimeter() e double area() sono ridefiniti in modo da ritornare perimetro ed
+area del cerchio, rispettivamente. Il metodo String toString() deve essere ridefinito
+in modo da ritornare la stringa "Circle of " seguita dalla chiamata al toString() della
+superclasse.
+
+Si scriva una sottoclasse Square di Rectangle che rappresenta un quadrato,
+con un costruttore che riceve colore e lato double del quadrato.
+Non si ridefiniscano i metodi double perimeter() e double area().
+Il metodo String toString() deve invece essere ridefinito in modo da ritornare
+la stringa "Square, a " seguita dalla chiamata al toString() della superclasse.
+
+Si scriva una sottoclasse GreenDot di Circle che rappresenta un cerchio di raggio
+1 e colore verde, con un costruttore senza argomenti.
+Non si ridefinisca alcun metodo al suo interno.
+
+
+Si scriva dentro it.univr una classe MainFigures con un metodo di partenza main
+che crea e stampa sul video un'istanza di ognuna delle figure geometriche implementate
+sopra. In tale classe è possibile chiamare il metodo getColor() sulle figure?
