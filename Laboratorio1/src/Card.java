@@ -20,7 +20,7 @@ public class Card {
         Random random = new Random();
         int valore;
         do {
-            valore = random.nextInt(13);
+            valore = random.nextInt(13);    //genera un numero random tra 0 e bound escluso
         } while (valore < min);
 
         value = valore;

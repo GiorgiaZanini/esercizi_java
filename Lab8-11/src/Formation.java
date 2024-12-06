@@ -13,7 +13,8 @@ public class Formation {
 
         /*
         for (int i = 0; i < players.length; i++) {
-            if (players[i].canUseHands()) {
+            SoccerPlayer player = players[i];
+            if (player.canUseHands()) {
                 portieri++;
             }
             if (portieri > 1) {
