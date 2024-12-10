@@ -4,7 +4,7 @@ public class Formation {
     public Formation(SoccerPlayer[] players) {
         this.players = players;
         if (!isValid())
-            throw new IllegalArgumentException("invalid formation");
+            throw new IllegalArgumentException("invalid formation");    //lancia un errore (rosso)
     }
 
     // ritorna true se e solo se la formazione è fatta da 11 giocatori, di cui esattamente uno è un portiere
@@ -23,7 +23,10 @@ public class Formation {
         }
          */
 
-        for (SoccerPlayer player : players) {
+        for (SoccerPlayer player : players) {   //for each → SoccerPlayer player = players[i];
+                                                //viene istanziata una variabile, in questo caso di tipo SoccerPlayer
+                                                // (bisogna prendere il tipo della proprietà della singola cella dell’array → ad esempio con String si prende char),
+                                                // che passa una a una ogni cella dell’array
             if (player.canUseHands()) {
                 portieri++;
             }

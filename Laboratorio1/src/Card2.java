@@ -21,9 +21,10 @@ public class Card2 {
         int valore;
         do {
             valore = random.nextInt(13);
-        } while (valore < min.ordinal());
+        } while (valore < min.ordinal());   //ordinal() ritorna l’indice della posizione del “segnaposto” all’interno dell’enumerazione
 
-        value = (Value.values())[valore];   // values() ritorna a modi array i valori dentro Enum
+
+                value = (Value.values())[valore];   // values() ritorna a modi array i valori dentro Enum
 
         /*
         switch (valore) {

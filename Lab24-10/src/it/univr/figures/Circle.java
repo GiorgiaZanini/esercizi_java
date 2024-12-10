@@ -2,11 +2,13 @@ package it.univr.figures;
 
 import it.univr.MainFigure;
 
-public class Circle extends Figure{
+public class Circle extends Figure{ //extends → Rectangle è figlia di Figure
     private double raggio;
 
     public Circle(Color colore, double raggio) {
-        super(colore);
+        super(colore);  //richiama il costruttore della superclasse e assegna il valore alla rispettiva proprietà, già presente nella superclasse (quindi non si deve ri-istanziare nella sottoclasse).
+                        //va richiamato nella prima riga di codice del costruttore, se non si scrive, è implicito super();
+
         this.raggio = raggio;
     }
 

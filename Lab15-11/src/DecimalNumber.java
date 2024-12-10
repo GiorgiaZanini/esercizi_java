@@ -10,7 +10,7 @@ public class DecimalNumber extends AbstractNumber{
 
     @Override
     protected char getCharForDigit(int digit) {
-        return string.charAt(digit);
+        return string.charAt(digit);    //ritorna il char (della stringa string) che corrisponde all’indice in input (digit)
     }
 
     private static final String string = "0123456789";

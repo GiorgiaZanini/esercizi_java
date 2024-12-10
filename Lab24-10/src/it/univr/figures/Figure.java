@@ -15,7 +15,7 @@ public class Figure {
         return 0;
     }
 
-    @Override
+    @Override   //indica che si sta andando a sovrascrivere il metodo di una classe superiore
     public String toString() {
         return "area: " + this.area() + ", perimeter: " + this.perimeter() + ", color: " + colore;
     }

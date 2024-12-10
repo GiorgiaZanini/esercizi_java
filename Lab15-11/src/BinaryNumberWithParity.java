@@ -15,13 +15,14 @@ public class BinaryNumberWithParity extends BinaryNumber{
             }
         }
         /*
-        for (char stringa : string) {
+        for (char stringa : string) {   //non si può fare il for each sulle stringhe
             if (stringa == 1) {
                 counter1++;
             }
         }
         */
 
-        return string + (counter1 % 2);
+        return string + (counter1 % 2); //se dispari il resto è 1, senno è 0
+                                        //viene concatenato alla stringa del numero binario già esistente
     }
 }

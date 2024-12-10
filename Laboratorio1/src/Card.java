@@ -16,7 +16,8 @@ public class Card {
      *
      * @param min il valore minimo (0-12) della carta che può essere generata
      */
-    public Card(int min) {
+    public Card(int min) {  //costruttore → assegna i valori alle proprietà e non ha return
+                            //ha lo stesso nome della classe e possono essercene più di uno, si differenziano dal numero di parametri che ricevono in input
         Random random = new Random();
         int valore;
         do {
@@ -34,7 +35,7 @@ public class Card {
      * Genera una carta a caso con un valore da 0 (incluso) in su.
      */
     public Card() {
-        // this(0);
+        // this(0); //si può richiamare il primo costruttore passando il parametro più generico
 
         Random random = new Random();
         value = random.nextInt(13);
@@ -68,7 +69,7 @@ public class Card {
      * @return true se e solo se le due carte sono uguali
      */
     public boolean equals(Card other) {
-        return value == other.value && this.suit == other.suit;
+        return value == other.value && this.suit == other.suit; //ritorna il risultato della condizione
     }
 
     /**

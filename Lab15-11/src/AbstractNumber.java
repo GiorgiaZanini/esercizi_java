@@ -14,7 +14,7 @@ public abstract class AbstractNumber implements Number {
         return this.value;
     }
 
-    // restituice la base di numerazione di questo numero
+    // restituisce la base di numerazione di questo numero
     protected abstract int getBase();
 
     // restituisce il carattere che rappresenta la cifra "digit" nella base di numerazione
@@ -52,15 +52,15 @@ public abstract class AbstractNumber implements Number {
         return this.value == otherNumb.getValue();
     }
 
-    // l'ordinamento fra i Number è quello crescente per valore
+    // ordinamento fra i Number è quello crescente per valore
     @Override
     public final int compareTo(Number other) {
         if (this.value < other.getValue()) {
-            return -1;
+            return -1;  //ritorna –1 se this < other
         } else if (this.value == other.getValue()) {
-            return 0;
+            return 0;   //ritorna 0 se this = other
         } else {
-            return 1;
+            return 1;   //ritorna 1 se this > other
         }
     }
 }
