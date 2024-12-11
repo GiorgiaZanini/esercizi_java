@@ -3,7 +3,7 @@ package it.univr.cards;
 import java.util.Objects;
 import java.util.Random;
 
-public class Card {
+public class Card implements Comparable<Card>{
     /**
      * Il valore della carta.
      */
@@ -66,5 +66,20 @@ public class Card {
     @Override
     public int hashCode() {
         return (value.ordinal() * 10) + suit.ordinal();
+    }
+
+    @Override
+    public int compareTo(Card other) {
+        if (value.ordinal() < other.value.ordinal())
+            return -1;
+        else if (value.ordinal() > other.value.ordinal())
+            return 1;
+
+        if (suit.ordinal() < other.suit.ordinal())
+            return -1;
+        else if (suit.ordinal() > other.suit.ordinal())
+            return 1;
+
+        return 0;
     }
 }

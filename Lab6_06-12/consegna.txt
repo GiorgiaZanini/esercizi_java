@@ -10,6 +10,7 @@ Le si inserisca dentro un package it.univr.cards. Quindi le si modifichi come se
 
 3.    Si faccia implementare a Card l'interfaccia di libreria Comparable<Card> ,
     in modo che le carte vengano ordinate prima per valore crescente e, a parità di valore, per seme crescente.
+
     Si scriva una classe di prova MainCards, dentro il package it.univr.cards, che crea un HashSet<Card> e un TreeSet<Card>, inizialmente vuoti.
     Poi riempie l'HashSet con 100 milioni di carte casuali e stampa il tempo richiesto per tale operazione (si sfrutti il metodo System.currentTimeMillis()).
     Successivamente riempie il TreeSet con 100 milioni di carte casuali e stampa il tempo richiesto per tale operazione.
