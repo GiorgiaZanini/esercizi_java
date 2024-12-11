@@ -65,6 +65,7 @@ public class Card implements Comparable<Card>{
 
     @Override
     public int hashCode() {
+        //return 0;
         return (value.ordinal() * 10) + suit.ordinal();
     }
 
