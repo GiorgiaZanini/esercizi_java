@@ -20,28 +20,7 @@ public class Card {
      */
     public Card(Value min) {
         Random random = new Random();
-        int valore;
-        do {
-            valore = random.nextInt(13);
-        } while (valore < min.ordinal());   //ordinal() ritorna l’indice della posizione del “segnaposto” all’interno dell’enumerazione
-
-
-        value = (Value.values())[valore];   // values() ritorna a modi array i valori dentro Enum
-
-        /*
-        switch (valore) {
-            case 0:
-                value = Value.DUE;
-                break;
-            case 1:
-                value = Value.TRE;
-                break;
-                // .....
-         }
-         */
-
-        // value = random.nextInt(13 - min) + min;
-
+        value = Value.values()[random.nextInt(13 - min.ordinal()) + min.ordinal()];
         suit = Suit.values()[random.nextInt(4)];
     }
 
@@ -76,7 +55,10 @@ public class Card {
      * @param other l'altra carta con cui confrontarsi
      * @return true se e solo se le due carte sono uguali
      */
-    public boolean equals(Card other) {
-        return value.equals(other.value) && suit.equals(other.suit);
+    public boolean equals(Object other) {
+        if (!(other instanceof Card))
+            return false;
+        
+        return value.equals(((Card) other).value) && suit.equals(((Card) other).suit);
     }
 }
