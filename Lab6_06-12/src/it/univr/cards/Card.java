@@ -1,5 +1,6 @@
 package it.univr.cards;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Card {
@@ -58,7 +59,12 @@ public class Card {
     public boolean equals(Object other) {
         if (!(other instanceof Card))
             return false;
-        
+
         return value.equals(((Card) other).value) && suit.equals(((Card) other).suit);
+    }
+
+    @Override
+    public int hashCode() {
+        return (value.ordinal() * 10) + suit.ordinal();
     }
 }
