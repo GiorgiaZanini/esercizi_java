@@ -17,7 +17,7 @@ public class MainDeck {
 
         System.out.println();
 
-        Deck deck3 = new Deck(52,Value.DUE);
+        Deck deck3 = new Deck(52,Value.DUE);    // 52 -> dimensione di un deck completo
         System.out.println(deck3);
         System.out.println("best of deck3: " + deck3.best());
     }
