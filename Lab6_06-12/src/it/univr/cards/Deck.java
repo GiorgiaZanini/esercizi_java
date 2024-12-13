@@ -10,8 +10,11 @@ public class Deck {
      * Costruisce un mazzo di size carte, tutte diverse, il cui valore è da min in su.
      */
     public Deck(int size, Value min) {
+        boolean aggiunto;
         for (int i = 0; i < size; i++) {
-            deck.add(new Card(min));
+            do {
+                aggiunto = deck.add(new Card(min));
+            } while (!aggiunto);
         }
     }
 
@@ -19,9 +22,12 @@ public class Deck {
      * Restituisce una stringa che descrive le carte in questo mazzo, costruita come la loro stampa in sequenza crescente per valore, separate da virgola, con parentesi quadre agli estremi.
      */
     public String toString() {
-        String stringDeck = "[ ";
+        String stringDeck = "[";
         for (Card card : deck) {
-            stringDeck += (card + ", ");
+            if (!(card.equals(deck.last())))
+                stringDeck += (card + ", ");
+            else
+                stringDeck += card;
         }
         return stringDeck + "]";
     }
