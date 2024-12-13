@@ -1,6 +1,5 @@
 package it.univr.cards;
 
-import java.util.Objects;
 import java.util.Random;
 
 public class Card implements Comparable<Card>{
