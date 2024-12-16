@@ -48,7 +48,7 @@ public class AudioBook extends Book {
 	 * mette prima i PaperBook e poi gli AudioBook.
 	 */
 	@Override
-	public int compareTo(Book other) {
+	public int compareTo(it.univr.library.Book other) {
 		return 0; //TODO
 	}
 }

@@ -4,7 +4,12 @@ package it.univr.library;
  * Un libro.
  */
 public abstract class Book implements Comparable<Book> {
-	
+
+	private String title = "";
+	private String author = "";
+	private int year = -1;
+	private final Genre genre;
+
 	/**
 	 * Crea un libro.
 	 * 
@@ -15,35 +20,49 @@ public abstract class Book implements Comparable<Book> {
 	 * @throws IllegalArgumentException se qualche parametro e' null
 	 */
 	protected Book(String title, String author, int year, Genre genre) {
-		// TODO
+		if (title.equals(null))
+			throw new IllegalArgumentException();
+		this.title = title;
+
+		if (author.equals(null))
+			throw new IllegalArgumentException();
+		this.author = author;
+
+		if (year < 0)
+			throw new IllegalArgumentException();
+		this.year = year;
+
+		if (genre.equals(null))
+			throw new IllegalArgumentException();
+		this.genre = genre;
 	}
 
 	/**
 	 * Restituisce il titolo del libro.
 	 */
 	public String getTitle() {
-		return null; //TODO
+		return title;
 	}
 
 	/**
 	 * Restituisce l'autore del libro.
 	 */
 	public String getAuthor() {
-		return null; //TODO
+		return author;
 	}
 
 	/**
 	 * Restituisce il genere del libro.
 	 */
 	public Genre getGenre() {
-		return null; //TODO
+		return genre;
 	}
 
 	/**
 	 * Restituisce l'anno di pubblicazione del libro.
 	 */
 	public int getYear() {
-		return 0; //TODO
+		return year;
 	}
 
 	/**
@@ -52,7 +71,7 @@ public abstract class Book implements Comparable<Book> {
 	 */
 	@Override
 	public String toString() {
-		return ""; //TODO
+		return "\"" + title + " - " + author + "\" (" + year + ", " + genre + ")";
 	}
 
 	/**
@@ -61,12 +80,19 @@ public abstract class Book implements Comparable<Book> {
 	 */
 	@Override
 	public boolean equals(Object other) {
-		return false; //TODO
+		if (!(other instanceof Book))
+			return false;
+
+		Book otherBook = (Book) other;
+		if (title.equals(otherBook.title) && author.equals(otherBook.author) && (year == otherBook.year))
+			return true;
+
+		return false;
 	}
 
 	@Override
 	public int hashCode() {
-		return 0; // TODO, non banale
+		return title.length() + author.length() + year + genre.ordinal();	//todo -> rivedere per migliorare
 	}
 
 	/**
@@ -75,6 +101,9 @@ public abstract class Book implements Comparable<Book> {
 	 */
 	@Override
 	public int compareTo(Book other) {
-		return 0; //TODO
+		if (this.equals(other))
+			return 0;
+
+		
 	}
 }

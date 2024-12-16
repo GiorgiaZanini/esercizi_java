@@ -8,7 +8,7 @@ Si possono definire altri campi, metodi, costruttori e classi, ma devono essere 
 La consegna fornita compila a meno di due costruttori che non compilano.
 La soluzione che verrà consegnata dovrà compilare, altrimenti non verrà corretta.
 
-    Lo scopo del compito `e di realizzare un catalogo dei libri di una biblioteca.
+    Lo scopo del compito è di realizzare un catalogo dei libri di una biblioteca.
     I libri possono essere cartacei (PaperBook) oppure audio (AudioBook).
     Un catalogo contiene vari libri, senza ripetizioni,
      e permette di specificare l’ordinamento con cui vanno tenuti dentro al catalogo stesso.
