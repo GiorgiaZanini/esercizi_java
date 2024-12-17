@@ -1,5 +1,7 @@
 package it.univr.library;
 
+import java.util.Comparator;
+
 /**
  * Un libro.
  */
@@ -92,7 +94,8 @@ public abstract class Book implements Comparable<Book> {
 
 	@Override
 	public int hashCode() {
-		return title.length() + author.length() + year + genre.ordinal();	//todo -> rivedere per migliorare
+		// return title.length() + author.length() + year + genre.ordinal();
+		return title.hashCode() + author.hashCode() + year + genre.hashCode();
 	}
 
 	/**
@@ -104,6 +107,14 @@ public abstract class Book implements Comparable<Book> {
 		if (this.equals(other))
 			return 0;
 
-		
+		if (!(title.equals(other.title)))
+			return title.compareTo(other.title);
+
+		if (!(author.equals(other.author)))
+			return author.compareTo(other.author);
+
+		if (year < other.year)
+			return -1;
+		return 1;
 	}
 }
