@@ -37,7 +37,7 @@ La soluzione che verrà consegnata dovrà compilare, altrimenti non verrà corre
     Esercizio 4 [5 punti]
         La classe CatalogWithStatistics si comporta come la sua superclasse Catalog,
          ma ha un toString che aggiunge, dopo la lista dei libri,
-          una riga che riporta il numero totale di pagine del libri cartacei
+          una riga che riporta il numero totale di pagine dei libri cartacei
           e il numero totale di minuti degli audio-libri.
         Si completi la classe dove indicato con TODO.
 

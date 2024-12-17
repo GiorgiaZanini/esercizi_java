@@ -13,7 +13,7 @@ public class CatalogWithStatistics extends Catalog {
 	 *              il catalogo dovra' contenere una sola istanza del libro ripetuto
 	 */
 	public CatalogWithStatistics(Book... books) {
-		//TODO
+		super(books);
 	}
 
 	/**
@@ -22,6 +22,20 @@ public class CatalogWithStatistics extends Catalog {
 	 */
 	@Override
 	public String toString() {
-		return ""; //TODO
+		int allPages = 0;
+		int allMinutes = 0;
+
+		while (super.iterator().hasNext()) {
+
+			if (super.iterator() instanceof PaperBook)
+				allPages += ((PaperBook) super.iterator()).getPages();
+
+			if (super.iterator() instanceof AudioBook)
+				allMinutes += ((AudioBook) super.iterator()).getMinutes();
+
+			super.iterator().next();
+		}
+
+		return super.toString() + "This catalog contains paper books for a total of " + allPages + "pages and audiobooks for a total of " + allMinutes + " minutes";
 	}
 }
