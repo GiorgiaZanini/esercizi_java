@@ -1,5 +1,7 @@
 package it.univr.library;
 
+import java.util.Iterator;
+
 /**
  * Un catalogo che stampa anche statistiche sui libri contenuti.
  */
@@ -25,17 +27,19 @@ public class CatalogWithStatistics extends Catalog {
 		int allPages = 0;
 		int allMinutes = 0;
 
-		while (super.iterator().hasNext()) {
+		Iterator<Book> iterator = super.iterator();	// Ottieni un iteratore dai libri del catalogo
+		Book book;
 
-			if (super.iterator() instanceof PaperBook)
-				allPages += ((PaperBook) super.iterator()).getPages();
+		while (iterator.hasNext()) {
+			book = iterator.next();
 
-			if (super.iterator() instanceof AudioBook)
-				allMinutes += ((AudioBook) super.iterator()).getMinutes();
+			if (book instanceof PaperBook)
+				allPages += ((PaperBook) book).getPages();
 
-			super.iterator().next();
+			if (book instanceof AudioBook)
+				allMinutes += ((AudioBook) book).getMinutes();
 		}
 
-		return super.toString() + "This catalog contains paper books for a total of " + allPages + "pages and audiobooks for a total of " + allMinutes + " minutes";
+		return super.toString() + "This catalog contains paper books for a total of " + allPages + " pages and audiobooks for a total of " + allMinutes + " minutes";
 	}
 }

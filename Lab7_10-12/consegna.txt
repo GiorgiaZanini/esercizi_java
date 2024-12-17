@@ -47,5 +47,5 @@ La soluzione che verrà consegnata dovrà compilare, altrimenti non verrà corre
         Tutti e tre i cataloghi contengono gli stessi libri, ma usano tre ordinamenti distinti.
         Inoltre il primo riporta anche il numero di pagine e minuti totali dei libri.
 
-Se tutto `e corretto, l’esecuzione del Main (già completo, non lo si modifichi)
+Se tutto è corretto, l’esecuzione del Main (già completo, non lo si modifichi)
 stamperà quanto riportato nel file di testo risultato main.txt.

@@ -8,9 +8,9 @@ import java.util.Comparator;
 public abstract class Book implements Comparable<Book> {
 
 	private String title = "";
-	private String author = "";
+	private String author= "";
 	private int year = -1;
-	private final Genre genre;
+	private Genre genre = null;
 
 	/**
 	 * Crea un libro.
@@ -22,21 +22,23 @@ public abstract class Book implements Comparable<Book> {
 	 * @throws IllegalArgumentException se qualche parametro e' null
 	 */
 	protected Book(String title, String author, int year, Genre genre) {
-		if (title.equals(null))
-			throw new IllegalArgumentException();
-		this.title = title;
+		try {
+			if (!(title.equals(null)))
+				this.title = title;
 
-		if (author.equals(null))
-			throw new IllegalArgumentException();
-		this.author = author;
+			if (!(author.equals(null)))
+				this.author = author;
 
-		if (year < 0)
-			throw new IllegalArgumentException();
-		this.year = year;
+			if (year < 0)
+				throw new IllegalArgumentException();
+			this.year = year;
 
-		if (genre.equals(null))
+			if (!(genre.equals(null)))
+				this.genre = genre;
+
+		} catch (NullPointerException e) {
 			throw new IllegalArgumentException();
-		this.genre = genre;
+		}
 	}
 
 	/**
@@ -73,7 +75,7 @@ public abstract class Book implements Comparable<Book> {
 	 */
 	@Override
 	public String toString() {
-		return "\"" + title + " - " + author + "\" (" + year + ", " + genre + ")";
+		return "\"" + title + "\" by " + author + " (" + year + ", " + genre + ")";
 	}
 
 	/**

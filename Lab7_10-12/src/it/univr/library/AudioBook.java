@@ -5,7 +5,7 @@ package it.univr.library;
  */
 public class AudioBook extends Book {
 
-	private int minutes;
+	private int minutes = -1;
 
 	/**
 	 * Crea un audio-libro.
@@ -19,6 +19,8 @@ public class AudioBook extends Book {
 	 */
 	public AudioBook(String title, String author, int year, Genre genre, int minutes) {
 		super(title, author, year, genre);
+		if (minutes < 0)
+			throw new IllegalArgumentException();
 		this.minutes = minutes;
 	}
 

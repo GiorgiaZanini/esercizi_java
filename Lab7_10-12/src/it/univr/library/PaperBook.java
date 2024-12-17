@@ -5,7 +5,7 @@ package it.univr.library;
  */
 public class PaperBook extends Book {
 
-	private int pages;
+	private int pages = -1;
 
 	/**
 	 * Crea un libro cartaceo.
@@ -19,6 +19,8 @@ public class PaperBook extends Book {
 	 */
 	public PaperBook(String title, String author, int year, Genre genre, int pages) {
 		super(title, author, year, genre);
+		if (pages < 0)
+			throw new IllegalArgumentException();
 		this.pages = pages;
 	}
 
@@ -59,9 +61,7 @@ public class PaperBook extends Book {
 			return super.compareTo(other);
 
 		if (!(other instanceof PaperBook)) {
-			if (other instanceof AudioBook)
-				return 1;
-			else return -1;
+			return 1;
 		}
 
 		if (pages < ((PaperBook) other).pages)
