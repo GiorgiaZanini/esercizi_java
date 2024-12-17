@@ -5,6 +5,8 @@ package it.univr.library;
  */
 public class PaperBook extends Book {
 
+	private int pages;
+
 	/**
 	 * Crea un libro cartaceo.
 	 * 
@@ -16,14 +18,15 @@ public class PaperBook extends Book {
 	 * @throws IllegalArgumentException se qualche parametro e' null o se pages e' negativo
 	 */
 	public PaperBook(String title, String author, int year, Genre genre, int pages) {
-		//TODO, non compila
+		super(title, author, year, genre);
+		this.pages = pages;
 	}
 
 	/**
 	 * Ritorna il numero di pagine del libro.
 	 */
 	public int getPages() {
-		return 0; // TODO
+		return pages;
 	}
 
 	/**
@@ -32,7 +35,7 @@ public class PaperBook extends Book {
 	 */
 	@Override
 	public String toString() {
-		return ""; //TODO
+		return super.toString() + " [" + pages + " pages]";
 	}
 
 	/**
@@ -40,7 +43,10 @@ public class PaperBook extends Book {
 	 */
 	@Override
 	public boolean equals(Object other) {
-		return false; //TODO
+		if (!super.equals(other))
+			return false;
+
+		return other instanceof PaperBook;
 	}
 
 	/**
@@ -49,6 +55,19 @@ public class PaperBook extends Book {
 	 */
 	@Override
 	public int compareTo(Book other) {
-		return 0; //TODO
+		if (super.compareTo(other) != 0)
+			return super.compareTo(other);
+
+		if (!(other instanceof PaperBook)) {
+			if (other instanceof AudioBook)
+				return 1;
+			else return -1;
+		}
+
+		if (pages < ((PaperBook) other).pages)
+			return -1;
+		else if (pages > ((PaperBook) other).pages)
+			return 1;
+		return 0;
 	}
 }

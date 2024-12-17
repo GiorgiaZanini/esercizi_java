@@ -5,6 +5,8 @@ package it.univr.library;
  */
 public class AudioBook extends Book {
 
+	private int minutes;
+
 	/**
 	 * Crea un audio-libro.
 	 * 
@@ -16,14 +18,15 @@ public class AudioBook extends Book {
 	 * @throws IllegalArgumentException se qualche parametro e' null o se minutes e' negativo
 	 */
 	public AudioBook(String title, String author, int year, Genre genre, int minutes) {
-		//TODO, non compila
+		super(title, author, year, genre);
+		this.minutes = minutes;
 	}
 
 	/**
 	 * Ritorna il numero di minuti dell'audio-libro.
 	 */
 	public int getMinutes() {
-		return 0; // TODO
+		return minutes;
 	}
 
 	/**
@@ -32,7 +35,7 @@ public class AudioBook extends Book {
 	 */
 	@Override
 	public String toString() {
-		return ""; //TODO
+		return super.toString() + " [" + minutes + " min]";
 	}
 
 	/**
@@ -40,8 +43,11 @@ public class AudioBook extends Book {
 	 */
 	@Override
 	public boolean equals(Object other) {
-		return false; //TODO
-	}
+		if (!super.equals(other))
+			return false;
+
+        return other instanceof AudioBook;
+    }
 
 	/**
 	 * Si comporta come il compareTo di Book ma, a parità di titolo, autore e anno,
@@ -49,6 +55,16 @@ public class AudioBook extends Book {
 	 */
 	@Override
 	public int compareTo(it.univr.library.Book other) {
-		return 0; //TODO
+		if (super.compareTo(other) != 0)
+			return super.compareTo(other);
+
+		if (!(other instanceof AudioBook))
+			return -1;
+
+		if (minutes < ((AudioBook) other).minutes)
+			return -1;
+		else if (minutes > ((AudioBook) other).minutes)
+			return 1;
+		return 0;
 	}
 }
