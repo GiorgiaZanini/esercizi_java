@@ -1,8 +1,6 @@
 package it.univr.library;
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.SortedSet;
+import java.util.*;
 
 /**
  * Un catalogo contiene dei libri (senza ripetizioni).
@@ -19,7 +17,8 @@ public class Catalog implements Iterable<Book> {
 	 *              il catalogo dovra' contenere una sola istanza del libro ripetuto
 	 */
 	public Catalog(Book... books) {
-		//TODO
+		catalog = new TreeSet<>();
+        Collections.addAll(catalog, books);
 	}
 
 	/**
@@ -30,7 +29,8 @@ public class Catalog implements Iterable<Book> {
 	 *              il catalogo dovra' contenere una sola istanza del libro ripetuto
 	 */
 	public Catalog(Comparator<Book> comparator, Book... books) {
-		//TODO
+		catalog = new TreeSet<>(comparator);
+		Collections.addAll(catalog, books);
 	}
 
 	@Override
@@ -44,6 +44,9 @@ public class Catalog implements Iterable<Book> {
 	 */
 	@Override
 	public String toString() {
-		return ""; //TODO
+		String string = "";
+		for (Book book : catalog)
+			string += book + "\n";
+		return string;
 	}
 }
