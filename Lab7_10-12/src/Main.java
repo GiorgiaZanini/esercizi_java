@@ -22,7 +22,7 @@ public class Main {
 			@Override
 			public int compare(Book thisBook, Book otherBook) {
 				if (!(thisBook.getAuthor().equals(otherBook.getAuthor())))
-					return thisBook.compareTo(otherBook);
+					return thisBook.getAuthor().compareTo(otherBook.getAuthor());
 				return thisBook.compareTo(otherBook);
 			}
 		};

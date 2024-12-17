@@ -45,8 +45,12 @@ public class Catalog implements Iterable<Book> {
 	@Override
 	public String toString() {
 		String string = "";
-		for (Book book : catalog)
+
+		for (Book book : catalog) {
 			string += book + "\n";
-		return string;
+			// catalog.last()
+		}
+
+		return string.trim();	// trim -> toglie " ", "\n" (davanti e in fondo alla stringa)
 	}
 }

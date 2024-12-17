@@ -40,6 +40,6 @@ public class CatalogWithStatistics extends Catalog {
 				allMinutes += ((AudioBook) book).getMinutes();
 		}
 
-		return super.toString() + "This catalog contains paper books for a total of " + allPages + " pages and audiobooks for a total of " + allMinutes + " minutes";
+		return super.toString() + "\nThis catalog contains paper books for a total of " + allPages + " pages and audiobooks for a total of " + allMinutes + " minutes";
 	}
 }
