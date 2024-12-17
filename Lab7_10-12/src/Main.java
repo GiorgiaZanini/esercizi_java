@@ -15,7 +15,7 @@ public class Main {
 		Book sv2 = new PaperBook("Gli Scala di Verona", "Roberta Guidi", 2012, Genre.HISTORY, 380);
 
 		// crea e poi stampa un catalogo con statistiche che contiene jj, cr, ps, ps2, gl, sv, sv2, ordinato secondo il compareTo fra i libri
-		System.out.println("Ordinamento naturale:\n" + new CatalogWithStatistics(jj, cr, ps, ps2, gl, sv, sv2) + "\n"));
+		System.out.println("Ordinamento naturale:\n" + new CatalogWithStatistics(jj, cr, ps, ps2, gl, sv, sv2) + "\n");
 
 		// crea e poi stampa un catalogo che contiene jj, cr, ps, ps2, gl, sv, sv2, ordinato per autore e, a parita' di autore, secondo il compareTo fra i libri
 		Comparator<Book> comparatorAuthor = new Comparator<Book>() {
