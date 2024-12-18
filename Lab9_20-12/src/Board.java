@@ -90,17 +90,6 @@ public class Board {
      * se e solo se processor.isAliveNextAt(x,y) è vero.
      */
     private void next(NextAliveProcessor processor) {
-        /*
-        for (int i = 0; i < width; i++)
-            for (int j = 0; j < height; j++)
-                current[i][j] = new  Boolean(current[i][j]);
-
-        for (boolean[] cellula : current) {
-            if (processor.isAliveNextAt(i,j))
-                cellula = true;
-            else cellula = false;
-        }
-        */
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
                 if (processor.isAliveNextAt(i,j))
