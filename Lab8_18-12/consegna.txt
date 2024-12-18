@@ -1,0 +1,70 @@
+1.    Si completi la seguente classe, che implementa un calendario annuale.
+    Si consideri il caso degli anni bisestili.
+    E' possibile aggiungere campi, costruttori e metodi ma solo private.
+
+        public class Calendar {
+            private final int year; // l'anno del calendario
+
+            public Calendar(int year) {
+            // costruisce il calendario per l'anno indicato
+            }
+
+            public boolean isLeapYear() {
+            // determina se il calendario è per un anno bisestile
+            }
+
+            public Date getStart() {
+            // restituisce la prima data del calendario (primo gennaio)
+            }
+
+            public Date getEnd() {
+            // restituisce l'ultima data del calendario (31 dicembre)
+            }
+
+            // classe interna
+            public class Date {
+                // 0 = primo gennaio, 364 = 31 dicembre (per i bisestili: 365 = 31 dicembre)
+                private final int daysFromStart;
+
+                private Date(int daysFromStart) {
+                    this.daysFromStart = daysFromStart;
+                }
+
+                // ritorna il giorno di questa data, tra 1 e 31
+                public int getDay() {
+                  ...
+                }
+
+                // ritorna il mese di questa data tra 1 e 12
+                public int getMonth() {
+                  ...
+                }
+
+                // ritorna l'anno di questa data
+                public int getYear() {
+                  ...
+                }
+
+                public String toString() {
+                    return String.format("%d/%d/%d", getDay(), getMonth(), getYear());
+                }
+            }
+        }
+
+
+2.    Si renda Calendar iterabile, dichiarandolo come implements Iterable<Calendar.Date>,
+    in modo che iterando su un calendario si ottengano le date dal primo gennaio al 31 dicembre dell'anno del calendario.
+
+    Si usi il seguente main di prova,
+    che dovrebbe stampare prima e ultima data del 2024 e tutte le date del 2024, dal primo gennaio al 31 dicembre:
+
+        public class MainCalendar {
+
+            public static void main(String[] args) {
+                Calendar cal = new Calendar(2024);
+                System.out.println("start: " + cal.getStart());
+                System.out.println("end: " + cal.getEnd());
+                for (Calendar.Date date: cal)
+                    System.out.println(date);
+            }
+        }

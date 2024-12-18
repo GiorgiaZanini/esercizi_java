@@ -57,5 +57,11 @@ public class Main {
 		catch (IllegalArgumentException e) {
 			System.out.println("illegale");
 		}
+
+		Catalog oggettoCatalogo = new Catalog(comparatorAuthor, jj, cr, ps, ps2, gl, sv, sv2);
+		for (Book book : oggettoCatalogo) {
+			//....
+			System.out.println(book);
+		}
 	}
 }

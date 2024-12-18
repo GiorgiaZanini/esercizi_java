@@ -1,0 +1,96 @@
+1.    Si completi la seguente classe Board, che implementa una tavola bidimensionale di cellule, rappresentate come booleani.
+    Il valore true indica che la cellula è viva, mentre il valore false indica che essa è morta.
+    Il metodo toString() (già scritto) riporta le cellule vive con un asterisco e quelle morte con uno spazio.
+
+        public class Board {
+            private final int width;
+            private final int height;
+            private boolean[][] current;
+            ...
+
+            /**
+            * Inizializza la tavola alle dimensioni indicate, in modo che
+            * contenga esattamente howManyAlive cellule vive, posizionate
+            * casualmente nella tavola.
+            *
+            * @param width la larghezza della tavola
+            * @param height l'altezza della tavola
+            * @param howManyAlive il numero di cellule vive della tavola
+            * @throws IllegalArgumentException se width o height sono negative,
+            *         oppure se howManyAlive è negativo o maggiore del numero di cellule della tavola
+            */
+            public Board(int width, int height, int howManyAlive) {
+                ...
+                this.width = width;
+                this.height = height;
+                this.current = new boolean[width][height];
+                ...
+            }
+
+            public int getWidth() { ... }
+
+            public int getHeight() { ... }
+
+            /**
+            * Determina se la cellula (x,y) è viva o morta.
+            */
+            public boolean isAliveAt(int x, int y) { ... }
+
+            public String toString() {
+                String result = "";
+                for (int y = 0; y < height; y++) {
+                    for (int x = 0; x < width; x++)
+                        result += isAliveAt(x, y) ? '*' : ' ';
+                    result += '\n';
+                }
+                return result;
+            }
+
+            /**
+            * Stampa ripetutamente questa tavola, chiamando ogni volta
+            * next() per farla passare alla generazione successiva. L'unico modo
+            * per terminare questo metodo è con CTRL+C. In Eclipse, tale segnale
+            * viene inviato cliccando sul pulsante quadrato rosso della console.
+            *
+            * @param processor la specifica di come si passa da una generazione alla successiva
+            */
+            public void play(NextAliveProcessor processor) throws InterruptedException {
+                while (true) {
+                    System.out.println(this);
+                    System.out.println("----------------------------------------");
+                    next(processor);
+                    Thread.sleep(500); // aspetta mezzo secondo
+                }
+            }
+
+            /**
+            * Modifica la tavola in modo che la cellula (x,y) sarà viva
+            * se e solo se processor.isAliveNextAt(x,y) è vero.
+            */
+            private void next(NextAliveProcessor processor) { ... }
+        }
+
+    La classe Board definisce un metodo privato next() che modifica le cellule facendole transitare dalla generazione corrente a quella successiva:
+    il modo in cui si calcola la generazione successiva da quella corrente è specificato tramite un oggetto che implementa la seguente interfaccia:
+
+        public interface NextAliveProcessor {
+            boolean isAliveNextAt(int x, int y);
+        }
+
+
+2.    Si crei una classe di prova MainAtLeast3 il cui main crea una Board di dimensione 40x20 con esattamente 100 cellule vive posizionate a caso,
+    quindi chiama il metodo play su tale Board, con un processore che rende una cellula viva alla prossima generazione,
+    se e solo se nella generazione corrente essa ha almeno 3 cellule adiacenti vive.
+    Suggerimento: definite una classe che implementa NextAliveProcessor e che riceve la Board tramite il suo costruttore.
+    In questo modo il processore può controllare lo stato delle cellule adiacenti.
+
+
+3.    Si crei una classe di prova MainGameOfLife identica a MainAtLeast3,
+    ma che usa un processore che rende una cellula viva alla prossima generazione basandosi sulle quattro regole del gioco della vita.
+
+
+4.    Si crei una classe di prova MainConstant identica a MainAtLeast3,
+    ma che usa un processore che rende una cellula viva alla prossima generazione se e solo se essa è viva nella generazione corrente (quindi il gioco non evolverà).
+
+
+5.    Si reimplementino i punti 2-3-4 usando delle lambda espressioni come processori.
