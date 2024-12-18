@@ -94,3 +94,16 @@
 
 
 5.    Si reimplementino i punti 2-3-4 usando delle lambda espressioni come processori.
+
+
+VICINI
+
+|  ||  ||  ||  ||  |
+--------------------
+|  ||NW||N ||NE||  |
+--------------------
+|  ||W ||C ||E ||  |
+--------------------
+|  ||SW||S ||SE||  |
+--------------------
+|  ||  ||  ||  ||  |
