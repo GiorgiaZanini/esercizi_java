@@ -1,7 +1,7 @@
 public class MainAtLeast3 {
-    prvate static Board board = new Board(40, 20, 100);
+    private static Board board = new Board(40, 20, 100);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         board.play(new Processor3());
     }
 
@@ -12,11 +12,11 @@ public class MainAtLeast3 {
 
             for (int i = (x-1); i <= (x+1); i++) {
                 for (int j = (y-1); j <= (y+1); j++) {
-                    if (h >= 0 && k >= 0 && h < board.getWidth() && k < board.getHeight() && i!=0 && j!=0 && board.isAliveAt(i,j))
-                                counterAlive++;
+                    if (i >= 0 && j >= 0 && i < board.getHeight() && j < board.getHeight() && i!=0 && j!=0 && board.isAliveAt(i,j))
+                        counterAlive++;
                 }
             }
-
+            
             return counterAlive >= 3;
         }
     }
