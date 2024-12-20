@@ -14,10 +14,12 @@ public class MainAtLeast3 {
                 for (int j = (y-1); j <= (y+1); j++) {
                     if (i >= 0 && j >= 0 && i < board.getWidth() && j < board.getHeight() && (i!=x || j!=y) && board.isAliveAt(i,j))    //or -> per entrare devono essere entrambe "false"
                         counterAlive++;
+                    if (counterAlive >= 3)
+                        return true;
                 }
             }
-            
-            return counterAlive >= 3;
+
+            return false;
         }
     }
 }

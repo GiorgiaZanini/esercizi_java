@@ -36,6 +36,7 @@ public class Board {
             for (int j = 0; j < height; j++)
                 current[i][j] = false;
 
+        /*
         Random random = new Random();
         int randomWidth;
         int randomHeight;
@@ -46,6 +47,18 @@ public class Board {
             } while (current[randomWidth][randomHeight]);
             current[randomWidth][randomHeight] = true;
         }
+        */
+
+        current[0][0] = true;
+        current[2][0] = true;
+        current[3][0] = true;
+        current[2][1] = true;
+        current[4][1] = true;
+        current[0][2] = true;
+        current[1][2] = true;
+        current[3][3] = true;
+        current[3][4] = true;
+        current[4][3] = true;
     }
 
     public int getWidth() {
@@ -95,10 +108,18 @@ public class Board {
      * se e solo se processor.isAliveNextAt(x,y) è vero.
      */
     private void next(NextAliveProcessor processor) {
+        //Board b = new Board(width, height, 0);
+        //b.current[0][0] = true;
+        boolean[][] tmpBoard = new boolean[width][height];
+        for (int i = 0; i < width; i++)
+            for (int j = 0; j < height; j++)
+                tmpBoard[i][j] = false;
+
         for (int i = 0; i < width; i++)
             for (int j = 0; j < height; j++)
                 if (processor.isAliveNextAt(i,j))
-                    current[i][j] = true;
-                else current[i][j] = false;
+                    tmpBoard[i][j] = true;
+
+        current = tmpBoard;
     }
 }
