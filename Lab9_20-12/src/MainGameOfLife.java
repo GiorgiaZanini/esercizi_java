@@ -1,5 +1,6 @@
 public class MainGameOfLife {
-    private static Board board = new Board(5, 5, 10);
+    private static Board board = new Board(40, 20, 100);
+    //private static Board board = new Board(5, 5, 10);
 
     public static void main(String[] args) throws InterruptedException {
         board.play(new ProcessorRules());

@@ -36,7 +36,6 @@ public class Board {
             for (int j = 0; j < height; j++)
                 current[i][j] = false;
 
-        /*
         Random random = new Random();
         int randomWidth;
         int randomHeight;
@@ -47,8 +46,7 @@ public class Board {
             } while (current[randomWidth][randomHeight]);
             current[randomWidth][randomHeight] = true;
         }
-        */
-
+        /*
         current[0][0] = true;
         current[2][0] = true;
         current[3][0] = true;
@@ -59,6 +57,7 @@ public class Board {
         current[3][3] = true;
         current[3][4] = true;
         current[4][3] = true;
+        */
     }
 
     public int getWidth() {
@@ -80,8 +79,10 @@ public class Board {
         String result = "";
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++)
-                result += isAliveAt(x, y) ? "|*" : "| ";
-            result += "|\n";
+                result += isAliveAt(x, y) ? '*' : ' ';
+                //result += isAliveAt(x, y) ? "|*" : "| ";
+            result += "\n";
+            //result += "|\n";
         }
         return result;
     }
@@ -98,6 +99,7 @@ public class Board {
         while (true) {
             System.out.println(this);
             System.out.println("----------------------------------------");
+            //System.out.println("---------------------------------------------------------------------------------");
             next(processor);
             Thread.sleep(500); // aspetta mezzo secondo
         }
