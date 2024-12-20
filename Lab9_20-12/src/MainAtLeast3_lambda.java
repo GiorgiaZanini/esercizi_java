@@ -2,12 +2,7 @@ public class MainAtLeast3_lambda {
     private static Board board = new Board(40, 20, 100);
 
     public static void main(String[] args) throws InterruptedException {
-        board.play(new Processor3());
-    }
-
-    private static class Processor3 implements NextAliveProcessor {
-        @Override
-        public boolean isAliveNextAt(int x, int y) {
+        board.play((x, y) -> {
             int counterAlive = 0;
 
             for (int i = (x-1); i <= (x+1); i++) {
@@ -20,6 +15,6 @@ public class MainAtLeast3_lambda {
             }
 
             return false;
-        }
+        });
     }
 }

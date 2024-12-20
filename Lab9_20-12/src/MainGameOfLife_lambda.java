@@ -2,12 +2,7 @@ public class MainGameOfLife_lambda {
     private static Board board = new Board(40, 20, 100);
 
     public static void main(String[] args) throws InterruptedException {
-        board.play(new ProcessorRules());
-    }
-
-    public static class ProcessorRules implements NextAliveProcessor {
-        @Override
-        public boolean isAliveNextAt(int x, int y) {
+        board.play((x, y) -> {
             int counterAlive = 0;
 
             for (int i = (x-1); i <= (x+1); i++) {
@@ -21,6 +16,6 @@ public class MainGameOfLife_lambda {
                 return (counterAlive >= 2 && counterAlive <=3); // rimane viva se intorno ha da 2 a 3 celle vive
             else
                 return counterAlive == 3;   // diventa viva se intorno ha esattamente 3 celle vive
-        }
+        });
     }
 }
