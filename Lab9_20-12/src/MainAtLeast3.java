@@ -1,31 +1,23 @@
 public class MainAtLeast3 {
+    prvate static Board board = new Board(40, 20, 100);
+
     public static void main(String[] args) {
-        Board board = new Board(40, 20, 100);
-        board.play();
+        board.play(new Processor3());
     }
 
     private static class Processor3 implements NextAliveProcessor {
         @Override
         public boolean isAliveNextAt(int x, int y) {
             int counterAlive = 0;
-            for (int i = 0; i < x; i++) {
-                for (int j = 0; j < y; j++) {
 
-                    counterAlive = 0;
-                    for (int h = (i-1); h <= (i+1); h++) {
-                        for (int k = (j-1); k <= (j+1); k++) {
-
-                            if (h >= 0 && k >= 0 && h < x && k < y && thisBoard[h][k] == true)
+            for (int i = (x-1); i <= (x+1); i++) {
+                for (int j = (y-1); j <= (y+1); j++) {
+                    if (h >= 0 && k >= 0 && h < board.getWidth() && k < board.getHeight() && i!=0 && j!=0 && board.isAliveAt(i,j))
                                 counterAlive++;
-
-                        }
-                    }
-                    if (counterAlive <= 3)
-                        nextBoard[i][j] = true;
-                    else nextBoard[i][j] = false;
-
                 }
             }
+
+            return counterAlive >= 3;
         }
     }
 }
