@@ -1,19 +1,11 @@
-public class MainGameOfLife {
+public class MainGameOfLife_lambda {
     private static Board board = new Board(40, 20, 100);
-    //private static Board board = new Board(5, 5, 10);
 
     public static void main(String[] args) throws InterruptedException {
         board.play(new ProcessorRules());
     }
 
-    /*
-     Rules
-     - Qualsiasi cella viva con meno di due celle vive adiacenti muore, come per effetto d'isolamento;
-     - Qualsiasi cella viva con due o tre celle vive adiacenti sopravvive alla generazione successiva;
-     - Qualsiasi cella viva con più di tre celle vive adiacenti muore, come per effetto di sovrappopolazione;
-     - Qualsiasi cella morta con esattamente tre celle vive adiacenti diventa una cella viva, come per effetto di riproduzione.
-     */
-    private static class ProcessorRules implements NextAliveProcessor {
+    public static class ProcessorRules implements NextAliveProcessor {
         @Override
         public boolean isAliveNextAt(int x, int y) {
             int counterAlive = 0;
