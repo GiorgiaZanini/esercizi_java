@@ -18,10 +18,15 @@ public class Board {
      *         oppure se howManyAlive è negativo o maggiore del numero di cellule della tavola
      */
     public Board(int width, int height, int howManyAlive) {
-        if (howManyAlive < 0 || howManyAlive > width || howManyAlive > height)
+        if (howManyAlive < 0 || howManyAlive > width*height)
             throw new IllegalArgumentException("il numero di cellule vive non è nel range previsto");
 
+        if (width < 0)
+            throw new IllegalArgumentException("width è negativo");
         this.width = width;
+
+        if (height < 0)
+            throw new IllegalArgumentException("height è negativo");
         this.height = height;
 
 

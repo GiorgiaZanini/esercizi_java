@@ -12,7 +12,7 @@ public class MainAtLeast3 {
 
             for (int i = (x-1); i <= (x+1); i++) {
                 for (int j = (y-1); j <= (y+1); j++) {
-                    if (i >= 0 && j >= 0 && i < board.getHeight() && j < board.getHeight() && i!=0 && j!=0 && board.isAliveAt(i,j))
+                    if (i >= 0 && j >= 0 && i < board.getWidth() && j < board.getHeight() && board.isAliveAt(i,j))
                         counterAlive++;
                 }
             }
