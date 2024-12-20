@@ -67,8 +67,8 @@ public class Board {
         String result = "";
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++)
-                result += isAliveAt(x, y) ? '*' : ' ';
-            result += '\n';
+                result += isAliveAt(x, y) ? "|*" : "| ";
+            result += "|\n";
         }
         return result;
     }
