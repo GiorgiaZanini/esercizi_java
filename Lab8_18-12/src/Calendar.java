@@ -1,6 +1,10 @@
-public class Calendar {
+import java.util.Iterator;
+import java.util.Objects;
+
+public class Calendar implements Iterable<Calendar.Date> {
     private final int year; // l'anno del calendario
-    private static final int[] daysForMonth = {30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30}; // ogni cella contiene il numero massimo di giorni per ogni mese, ridotto di 1 (anno non bisestile)
+    //private static final int[] daysForMonth = {30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30}; // ogni cella contiene il numero massimo di giorni per ogni mese, ridotto di 1 (anno non bisestile)
+    private static final int[] daysForMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     // costruisce il calendario per l'anno indicato
     public Calendar(int year) {
@@ -24,11 +28,30 @@ public class Calendar {
         return new Date(364);
     }
 
+    @Override
+    public Iterator<Calendar.Date> iterator() {
+        return new Iterator<Calendar.Date>() {
+            private Date date = getStart();
+            int day = 0;
+
+            public boolean hasNext() {
+                return !date.equals(getEnd());
+            }
+
+            public Date next() {
+                date = new Date(day);
+                day++;
+                return date;
+            }
+        };
+    }
+
+
     // classe interna (inner class)
     public class Date {
         // 0 = primo gennaio, 364 = 31 dicembre (per i bisestili: 365 = 31 dicembre)
         private final int daysFromStart;    // giorno nel range da trasformare in data
-        private int iMonth; // indice dell'array, corrisponde al mese ridotto di 1 (alla fine del for già giusta)
+        private int iMonth; // indice dell'array, corrisponde al mese ridotto di 1
         private int currentDay;
 
         private Date(int daysFromStart) {
@@ -51,15 +74,21 @@ public class Calendar {
         dicembre --> 1-31 ---------> 334-364 | 335-365
          */ // tabella mesi-giorni
         private void rangeDaysForMonth() {
-            int daysFromStart = this.daysFromStart;
+            int daysFromStart = this.daysFromStart + 1;
             for (iMonth = 0; iMonth < 12; iMonth++) {
-                if (daysFromStart <= daysForMonth[iMonth]) {
-                    currentDay = daysFromStart;
-                    break;
+                if (isLeapYear() && iMonth == 1) {
+                    if (daysFromStart <= daysForMonth[iMonth] + 1) {
+                        currentDay = daysFromStart;
+                        break;
+                    }
+                    daysFromStart--;
+                } else {
+                    if (daysFromStart <= daysForMonth[iMonth]) {
+                        currentDay = daysFromStart;
+                        break;
+                    }
                 }
                 daysFromStart -= daysForMonth[iMonth];
-                if (iMonth == 1 && isLeapYear())
-                    daysFromStart--;
             }
         }
 
@@ -70,7 +99,7 @@ public class Calendar {
 
         // ritorna il mese di questa data tra 1 e 12
         public int getMonth() {
-            return iMonth;
+            return Math.min(iMonth+1, 12);
         }
 
         // ritorna l'anno di questa data
@@ -80,6 +109,14 @@ public class Calendar {
 
         public String toString() {
             return String.format("%d/%d/%d", getDay(), getMonth(), getYear());
+        }
+
+        @Override
+        public boolean equals(Object other) {
+             if (!(other instanceof Date))
+                 return false;
+
+             return ((Date) other).daysFromStart == this.daysFromStart;
         }
     }
 }
