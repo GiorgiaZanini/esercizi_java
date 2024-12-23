@@ -14,12 +14,14 @@ public class Calendar {
 
     // restituisce la prima data del calendario (primo gennaio)
     public Date getStart() {
-
+        return new Date(0);
     }
 
     // restituisce l'ultima data del calendario (31 dicembre)
     public Date getEnd() {
-
+        if (isLeapYear())
+            return new Date(365);
+        return new Date(364);
     }
 
     // classe interna (inner class)
