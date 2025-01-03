@@ -1,12 +1,18 @@
 package it.univr.corso;
 
+import java.util.Date;	// rappresentare una data e un’ora (da Java 8)
+import java.util.Calendar;	// ottenere la data e l’ora attuali (da Java 8)
+import java.time.LocalDateTime;	// ottenere la data e l’ora attuali (da Java 8)
 import java.util.Scanner;
 
 /**
  * Uno studente, che si puo' iscrivere agli esami di un corso di laurea.
  */
 public class Studente implements Comparable<Studente> {
-	// aggiungete campi se servissero
+	private final String nome;
+	private final String cognome;
+	private final int matricola;
+	private final int annoDiImmatricolazione;
 
 	/**
 	 * Crea uno studente con il nome, cognome, matricola e anno di immatricolazione indicati.
@@ -15,7 +21,18 @@ public class Studente implements Comparable<Studente> {
 	 *                                   o se la matricola è negativa
 	 */
 	public Studente(String nome, String cognome, int matricola, int annoDiImmatricolazione) throws StudenteIllegaleException {
-		// completare
+		this.nome = nome;
+		this.cognome = cognome;
+
+		if (matricola < 0)
+			throw new StudenteIllegaleException("numero di matricola negativo");
+		this.matricola = matricola;
+
+		Calendar calendar = Calendar.getInstance();
+		if (annoDiImmatricolazione > calendar.get(Calendar.YEAR))	// calendar.get(Calendar.YEAR) -> ritorna anno corrente
+																	// Calendar.YEAR è un intero che serve per riferirsi al campo dell'anno in un oggetto Calendar
+			throw new StudenteIllegaleException("anno futuro rispetto a quello corrente");
+		this.annoDiImmatricolazione = annoDiImmatricolazione;
 	}
 
 	/**
