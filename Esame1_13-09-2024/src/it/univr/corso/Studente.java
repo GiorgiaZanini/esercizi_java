@@ -59,15 +59,18 @@ public class Studente implements Comparable<Studente> {
 	 */
 	@Override
 	public boolean equals(Object other) {
-		// completare
-	}
+		if (!(other instanceof Studente))
+			return false;
+
+        return this.matricola == ((Studente) other).matricola;
+    }
 
 	/**
 	 * Deve essere non banale e compatibile con equals.
 	 */
 	@Override
 	public int hashCode() {
-		// completare
+		return matricola;
 	}
 
 	/**
@@ -75,23 +78,38 @@ public class Studente implements Comparable<Studente> {
 	 */
 	@Override
 	public int compareTo(Studente other) {
-		// completare
+		/*
+		if (this.matricola > other.matricola)
+			return 1;
+		if (this.matricola < other.matricola)
+			return -1;
+		return 0;
+		 */
+		return Integer.compare(this.matricola, other.matricola);
 	}
 
+	// restituisce una stringa del tipo "34555 Giulio Andreotti immatricolato nel 2017"
 	@Override
 	public String toString() {
-		// restituisce una stringa del tipo "34555 Giulio Andreotti immatricolato nel 2017"
-
-		// completare
+		return matricola + " " + nome + " " + cognome + " immatricolato nel " + annoDiImmatricolazione;
 	}
 
 	/**
 	 * Determina se questo studente e' fuori corso rispetto al corso di laurea indicato:
 	 * ovvero se si e' immatricolato prima della durata del corso di laurea.
 	 */
+	//return true -> fuori corso
 	public boolean fuoriCorso(Corso corso) {
-		// completare
+		return annoDiImmatricolazione > (annoDiImmatricolazione + corso.getDurata());
 	}
 
 	// aggiungete i metodi accessori pubblici getAnnoDiImmatricolazione() e getMatricola()
+
+	public int getAnnoDiImmatricolazione() {
+		return annoDiImmatricolazione;
+	}
+
+	public int getMatricola() {
+		return matricola;
+	}
 }
