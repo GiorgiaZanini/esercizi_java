@@ -1,6 +1,7 @@
 package it.univr.corso;
 
 import java.time.Year;
+import java.util.Calendar;
 
 /**
  * Uno studente lavoratore è identico a uno studente ma finisce fuori corso
@@ -10,8 +11,12 @@ public class StudenteLavoratore extends Studente {
 	// aggiungete campi se servissero
 
 	public StudenteLavoratore(String nome, String cognome, int matricola, int annoDiImmatricolazione) throws StudenteIllegaleException {
-		// completare
+		super(nome, cognome, matricola, annoDiImmatricolazione);
 	}
 
-	// forse dovete ridefinire qualcosa?
+	@Override
+	public boolean fuoriCorso(Corso corso) {
+		Calendar calendar = Calendar.getInstance();
+		return (calendar.get(Calendar.YEAR) - getAnnoDiImmatricolazione()) > (corso.getDurata() * 2);
+	}
 }

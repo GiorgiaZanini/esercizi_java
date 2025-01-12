@@ -100,7 +100,8 @@ public class Studente implements Comparable<Studente> {
 	 */
 	//return true -> fuori corso
 	public boolean fuoriCorso(Corso corso) {
-		return annoDiImmatricolazione > (annoDiImmatricolazione + corso.getDurata());
+		Calendar calendar = Calendar.getInstance();
+		return (calendar.get(Calendar.YEAR) - annoDiImmatricolazione) > corso.getDurata();
 	}
 
 	// aggiungete i metodi accessori pubblici getAnnoDiImmatricolazione() e getMatricola()
