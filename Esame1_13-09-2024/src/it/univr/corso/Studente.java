@@ -9,6 +9,7 @@ import java.util.Scanner;
  * Uno studente, che si puo' iscrivere agli esami di un corso di laurea.
  */
 public class Studente implements Comparable<Studente> {
+	// aggiungete campi se servissero
 	private final String nome;
 	private final String cognome;
 	private final int matricola;

@@ -1,6 +1,7 @@
 package it.univr.corso;
 
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class MainEsame {
 
@@ -28,6 +29,13 @@ public class MainEsame {
 
 		System.out.println("\nMatricole degli studenti fuori corso:");
 		// chiamate perOgniIscritto per stampare le matricole degli studenti fuori corso iscritti all'esame
+		Predicate<Studente> p = new Predicate<Studente>() {
+			@Override
+			public boolean test(Studente studente) {
+				return false;
+			}
+		};
+
 		esame.perOgniIscritto(
 			// completare
 		);
