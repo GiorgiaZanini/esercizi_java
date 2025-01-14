@@ -1,6 +1,7 @@
 package it.univr.corso;
 
 import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -12,7 +13,7 @@ public class Esame {
 	// aggiungete campi se servissero
 	private final String nome_esame;
 	private final Corso corso;
-	private SortedSet<Studente> iscritti;
+	private SortedSet<Studente> iscritti = new TreeSet<>();
 
 	/**
 	 * Crea un esame con il nome indicato, per il corso indicato, inizialmente senza iscritti.
@@ -29,11 +30,12 @@ public class Esame {
 	 *                                   iscritto a questo esame con la stessa matricola
 	 */
 	public void iscrivi(Studente studente) throws StudenteIllegaleException {
-		for (Studente s : iscritti) {
-			if (s.getMatricola() == studente.getMatricola())
-				throw new StudenteIllegaleException("numero matricola già registrata");
+		if (!iscritti.isEmpty()) {
+			for (Studente s : iscritti) {
+				if (s.getMatricola() == studente.getMatricola())
+					throw new StudenteIllegaleException("numero matricola già registrata");
+			}
 		}
-
 		iscritti.add(studente);
 	}
 
@@ -69,12 +71,13 @@ public class Esame {
 	@Override
 	public String toString() {
 		String allStudents = "Esame di " + nome_esame + " del corso di " + corso.getNome() + ":\n";
-		String fuoriCorso = "Matricole degli studenti fuori corso:\n";
-		String lavoratori = "Studenti lavoratori:\n";
+		//String fuoriCorso = "Matricole degli studenti fuori corso:\n";
+		//String lavoratori = "Studenti lavoratori:\n";
 
 		for (Studente s : iscritti) {
 			allStudents += s.toString() + "\n";
 
+			/*
 			if (s instanceof StudenteLavoratore) {
 				lavoratori += s.toString() + "\n";
 				if (((StudenteLavoratore) s).fuoriCorso(corso))
@@ -83,8 +86,10 @@ public class Esame {
 				if (s.fuoriCorso(corso))
 					fuoriCorso += s.getMatricola() + "\n";
 			}
+			 */
 		}
 
+		/*
 		if (allStudents.equals("Esame di " + nome_esame + " del corso di " + corso.getNome() + ":\n")) {
 			allStudents += "-\n";
 			fuoriCorso += "-\n";
@@ -98,8 +103,10 @@ public class Esame {
 				lavoratori += "-\n";
 			}
 		}
+		 */
 
-		return (allStudents + fuoriCorso + lavoratori).trim();
+		//return (allStudents + fuoriCorso + lavoratori).trim();
+		return allStudents.trim();
 	}
 
 	/**
