@@ -17,7 +17,7 @@ public abstract class AbstractComponent implements Component {
 
 	@Override
 	public final String toString() {
-		// completate
+		return toString("");
 	}
 
 	// sotto potete aggiungere solo cose private, se servissero;

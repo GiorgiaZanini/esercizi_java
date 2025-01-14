@@ -12,9 +12,8 @@ public interface Component {
 	String getName();
 
 	/**
-	 * Ritorna una stringa che rappresenta la componente e le sottocomponenti,
-	 * ricorsivamente, come nel testo del compito. Il contenuto di una directory
-	 * deve venire riportato in ordine alfabetico crescente per nome.
+	 * Ritorna una stringa che rappresenta la componente e le sottocomponenti, ricorsivamente, come nel testo del compito.
+	 * Il contenuto di una directory deve venire riportato in ordine alfabetico crescente per nome.
 	 */
 	String toString();
 

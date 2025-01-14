@@ -20,6 +20,6 @@ public class MainFiles {
 		System.out.println("total size: " + root.size() + " bytes");
 		System.out.println("files: " + root.getFiles());
 		System.out.println("dog.gif si trova come " + root.find("dog.gif"));
-		System.out.println("Pluto.c si trova come " + root.find("Pluto.c"));
+		//System.out.println("Pluto.c si trova come " + root.find("Pluto.c"));
 	}
 }
