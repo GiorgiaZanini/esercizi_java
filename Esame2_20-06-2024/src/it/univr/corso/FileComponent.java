@@ -20,7 +20,7 @@ public class FileComponent extends AbstractComponent {
 
 	@Override
 	public String toString(String nesting) {
-		return nesting + toString();
+		return nesting + getName();
 	}
 
 	@Override
