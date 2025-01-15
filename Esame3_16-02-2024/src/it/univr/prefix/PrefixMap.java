@@ -9,6 +9,8 @@ public class PrefixMap<E> {
 	// lega value alla chiave key
 	public void put(String key, E value) {
 		// completare: NullPointerException se key fosse null
+		if (key == null)
+			throw new NullPointerException("null keys are not allowed");
 
 		if (root == null)
 			root = new Leaf<E>(key, value);
@@ -20,6 +22,7 @@ public class PrefixMap<E> {
 	// altrimenti ritorna null
 	public E get(String key) {
 		// completare
+
 		return null;
 	}
 
