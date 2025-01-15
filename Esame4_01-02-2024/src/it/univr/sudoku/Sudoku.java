@@ -26,6 +26,8 @@ public class Sudoku<E> {
 	public Sudoku(int empty, IntFunction<E> generator) {
 		// completare lanciando una IllegalArgumentException se empty
 		// non fosse tra 0 e 61 inclusi
+		if (empty < 0 || empty > 61)
+			throw new IllegalArgumentException("numero caselle vuote non valido");
 
 		this.generator = generator;
 
@@ -50,6 +52,22 @@ public class Sudoku<E> {
 	public String toString() {
 		String result = "";
 		// completare
+		for (int j = 0; j < 9; j++) {
+			for (int i = 0; i < 9; i++) {
+				if (matrix[i][j] == 0) {
+					result += " ".repeat(elementSize);
+				} else {
+					result += generator.apply(matrix[i][j]);
+				}
+
+				if (i == 2 || i == 5)
+					result += "|";
+			}
+			result += "\n";
+			if (j == 2 || j == 5)
+				result += "-".repeat(9 * elementSize + 2) + "\n";
+		}
+
 		return result;
 	}
 
@@ -59,9 +77,18 @@ public class Sudoku<E> {
 	// scelte a caso fra quelle che non sono già a 0
 	private void hide(int howMany) {
 		// completare
+		int i;
+		int j;
+		for (int n = 0; n < howMany; n++) {
+			do {
+				i = random.nextInt(9);
+				j = random.nextInt(9);
+			} while (matrix[i][j] == 0);
+			matrix[i][j] = 0;
+		}
 	}
 
-	// genera un sudoku risolto (già fatto, non dovete modificare nulla)
+	// genera un sudokSudokuu risolto (già fatto, non dovete modificare nulla)
 	private void generate() {
 		generate(0, 0);
 	}
@@ -93,15 +120,147 @@ public class Sudoku<E> {
 	// determina se l'elemento alle coordinate x,y è unico nella sua riga
 	private boolean isHorizontallyUnique(int x, int y) {
 		// completare
+		for (int i = 0; i <= 8; i++) {
+			if (i != x) {
+				if (matrix[i][y] == matrix[x][y])
+					return false;
+			}
+		}
+		return true;
 	}
 
 	// determina se l'elemento alle coordinate x,y è unico nella sua colonna
 	private boolean isVerticallyUnique(int x, int y) {
 		// completare
+		for (int i = 0; i <= 8; i++) {
+			if (i != y) {
+				if (matrix[x][i] == matrix[x][y])
+					return false;
+			}
+		}
+		return true;
 	}
 
 	// determina se l'elemento alle coordinate x,y è duplicato nella sua regione
 	private boolean isUniqueInRegion(int x, int y) {
 		// completare
+		/*
+		if ((x >= 0 && x <= 2) && (y >= 0 && y <= 2)) {				// 0-2 - 0-2	// prima riga
+
+			for (int i = 0; i <= 2; i++) {
+				for (int j = 0; j <= 2; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else if ((x >= 0 && x <= 2) && (y >= 3 && y <= 5)) {		// 0-2 - 3-5
+
+			for (int i = 0; i <= 2; i++) {
+				for (int j = 3; j <= 5; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else if ((x >= 0 && x <= 2) && (y >= 6 && y <= 8)) {		// 0-2 - 6-8
+
+			for (int i = 0; i <= 2; i++) {
+				for (int j = 6; j <= 8; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else if ((x >= 3 && x <= 5) && (y >= 0 && y <= 2)) {		// 3-5 - 0-2	// seconda riga
+
+			for (int i = 3; i <= 5; i++) {
+				for (int j = 0; j <= 2; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else if ((x >= 3 && x <= 5) && (y >= 3 && y <= 5)) {		// 3-5 - 3-5
+
+			for (int i = 3; i <= 5; i++) {
+				for (int j = 3; j <= 5; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else if ((x >= 3 && x <= 5) && (y >= 6 && y <= 8)) {		// 3-5 - 6-8
+
+			for (int i = 3; i <= 5; i++) {
+				for (int j = 6; j <= 8; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else if ((x >= 6 && x <= 8) && (y >= 0 && y <= 2)) {		// 6-8 - 0-2	// terza riga
+
+			for (int i = 6; i <= 8; i++) {
+				for (int j = 0; j <= 2; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else if ((x >= 6 && x <= 8) && (y >= 3 && y <= 5)) {		// 6-8 - 3-5
+
+			for (int i = 6; i <= 8; i++) {
+				for (int j = 3; j <= 5; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		} else {													// 6-8 - 6-8
+
+			for (int i = 6; i <= 8; i++) {
+				for (int j = 6; j <= 8; j++) {
+					if (i != x && j != y) {
+						if (matrix[i][j] == matrix[x][y])
+							return false;
+					}
+				}
+			}
+
+		}
+
+		return true;
+		 */
+
+		// determina numero quadrante
+		int i = x/3;
+		int j = y/3;
+
+		for (int h = 0; h < 3; h++) {
+			for (int k = 0; k < 3; k++) {
+				if (((i * 3) + h) != x && ((j * 3) + k) != y) {
+					if (matrix[(i * 3) + h][(j * 3) + k] == matrix[x][y])	// (i * 3) + h -> cella corrente da controllare nel quadrante i
+						return false;
+				}
+			}
+		}
+		return true;
 	}
 }
