@@ -10,7 +10,7 @@ public class SUB implements Instruction {
     public void execute(List<Integer> stack) throws IllegalProgramException {
         int size = stack.size();
         if (size < 2)
-            throw new IllegalProgramException("numero di elementi presenti nello stack insufficente per l'operazione sub");
+            throw new IllegalProgramException("Errore: Operandi insufficienti per un’operazione binaria");
         // se l'operazione non va a buon fine, rimetto i numeri nello stack (in questo caso non li rimuovo nemmeno dalla lista)
 
         // pop1 -> i2

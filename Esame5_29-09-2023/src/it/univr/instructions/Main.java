@@ -38,8 +38,8 @@ public class Main {
 
 		try {
 			System.out.println("Printing machine:");
-			//int result = new PrintingMachine(program).getResult();
-			//System.out.println("result = " + result + "\n");
+			int result = new PrintingMachine(program).getResult();
+			System.out.println("result = " + result + "\n");
 		}
 		catch (IllegalProgramException e) {
 			System.out.println("Errore: " + e.getMessage() + "\n");
