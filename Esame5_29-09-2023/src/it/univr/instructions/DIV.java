@@ -21,9 +21,9 @@ public class DIV implements Instruction {
             throw new IllegalProgramException("i2 = 0");
 
         int result = stack.get(size - 2) - i2;
-        new POP();
-        new POP();
-        new PUSH(result);
+        new POP().execute(stack);
+        new POP().execute(stack);
+        new PUSH(result).execute(stack);
     }
 
     @Override

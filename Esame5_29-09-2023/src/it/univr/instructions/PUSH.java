@@ -24,6 +24,6 @@ public class PUSH implements Instruction {
 
     @Override
     public String toString() {
-        return "push";
+        return "push(" + c + ")";
     }
 }

@@ -20,6 +20,6 @@ public class REPEAT implements Instruction {
 
     @Override
     public String toString() {
-        return "repeat";
+        return "repeat(" + c + ", " + ins.toString() + ")";
     }
 }

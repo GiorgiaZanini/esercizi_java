@@ -36,8 +36,11 @@ public class SimpleMachine implements Machine {
 	 *                                 alla fine dell'esecuzione lo stack e' vuoto (e quindi
 	 *                                 non c'e' nessun elemento in cima da potere ritornare)
 	 */
-	private int execute(List<Instruction> program) throws IllegalProgramException {
-		return 0; // TODO
+	private int execute(List<Instruction> program) throws IllegalProgramException {	// TODO
+		for (int i = 0; i < program.size(); i++) {
+			execute(program.get(i), stack);
+		}
+		return stack.get(stack.size() - 1);
 	}
 
 	/**

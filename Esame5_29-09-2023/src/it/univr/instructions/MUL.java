@@ -17,9 +17,9 @@ public class MUL implements Instruction {
         // pop2 -> i1
 
         int result = stack.get(size - 2) * stack.get(size - 1);
-        new POP();
-        new POP();
-        new PUSH(result);
+        new POP().execute(stack);
+        new POP().execute(stack);
+        new PUSH(result).execute(stack);
     }
 
     @Override
