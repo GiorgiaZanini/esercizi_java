@@ -70,6 +70,9 @@ public class PunishableSet<E> implements Iterable<E> {
 		this.onRemove = onRemove;
 
 		// COMPLETARE
+		for (E element : elements) {
+			add(element);
+		}
 	}
 
 	/**
@@ -85,6 +88,7 @@ public class PunishableSet<E> implements Iterable<E> {
 	 */
 	public PunishableSet(E[] elements, ToIntFunction<E> init) {
 		// COMPLETARE
+		this(elements, init, onAdd -> {}, onRemove -> {});
 	}
 
 	/**
@@ -96,6 +100,7 @@ public class PunishableSet<E> implements Iterable<E> {
 	 */
 	public PunishableSet(E[] elements) {
 		// COMPLETARE
+		this(elements, init -> 1000);
 	}
 
 	/**
@@ -113,6 +118,14 @@ public class PunishableSet<E> implements Iterable<E> {
 	 */
 	public boolean add(E element) {
 		// COMPLETARE
+		if (init.applyAsInt(element) < 0)
+			return false;
+		if (container.containsKey(element))
+			return false;
+
+		container.put(element, init.applyAsInt(element));
+		onAdd.accept(element);
+		return true;
 	}
 
 	/**
@@ -128,6 +141,12 @@ public class PunishableSet<E> implements Iterable<E> {
 	 */
 	public boolean remove(E element) {
 		// COMPLETARE
+		if (!container.containsKey(element))
+			return false;
+
+		container.remove(element);
+		onRemove.accept(element);
+		return true;
 	}
 
 	/**
@@ -137,11 +156,36 @@ public class PunishableSet<E> implements Iterable<E> {
 	 * questa funzione non ha effetto (oltre all'eventuale eccezione).
 	 * 
 	 * @param element l'elemento da punire
-	 * @param points quanti punti devono venire tolti  element
+	 * @param points quanti punti devono venire tolti a element
 	 * @throws IllegalArgumentException se points fosse negativo
 	 */
 	public void punish(E element, int points) {
 		// COMPLETARE
+		if (points < 0)
+			throw new IllegalArgumentException("points negativo");
+		if (!container.containsKey(element))
+			//throw new IllegalArgumentException(element + " non è contento nell'insime");
+			return;
+
+		Integer value = container.get(element);
+		if (value != null)
+			points = value - points;
+
+		/*
+		remove(element);
+		if (points >= 0)
+			container.put(element, points);
+		 */
+		/*
+		if (points < 0)
+			remove(element);
+		else
+			container.put(element, points);
+		 */
+		if (points > 0)
+			container.put(element, points);
+		else
+			remove(element);
 	}
 
 	/**
@@ -155,6 +199,18 @@ public class PunishableSet<E> implements Iterable<E> {
 	 */
 	public void pardon(E element, int points) {
 		// COMPLETARE
+		if (points < 0)
+			throw new IllegalArgumentException("points negativo");
+		if (!container.containsKey(element))
+			//throw new IllegalArgumentException(element + " non è contento nell'insime");
+			return;
+
+		Integer value = container.get(element);
+		if (value != null)
+			points = value + points;
+
+		remove(element);
+		container.put(element, points);
 	}
 
 	/**
@@ -172,4 +228,9 @@ public class PunishableSet<E> implements Iterable<E> {
 	}
 
 	// QUI VA AGGIUNTO UN SOLO METODO public
+
+	@Override
+	public Iterator<E> iterator() {
+		return container.keySet().iterator();
+    }
 }
