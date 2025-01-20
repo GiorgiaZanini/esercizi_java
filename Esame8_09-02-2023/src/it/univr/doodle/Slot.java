@@ -16,20 +16,50 @@ public class Slot implements Comparable<Slot> {
 	}
 
 	public int compareTo(Slot other) {
-		// deve comparare this e other in ordine temporale crescente
-		return 0;
+		if (this.equals(other))
+			return 0;
+
+		if (year == other.year) {
+			if (month == other.month) {
+				if (day == other.day) {
+					if (moment.ordinal() > other.moment.ordinal())
+						return 1;
+					else
+						return -1;
+				} else if (day > other.day)
+					return 1;
+				else
+					return -1;
+			} else if (month > other.month)
+				return 1;
+			else
+				return -1;
+		} else if (year > other.year)
+			return 1;
+		else
+			return -1;
 	}
 
+	@Override
 	public boolean equals(Object other) {
 		// this e other sono uguali se rappresentano lo stesso slot temporale
-		return false;
+		if (other == null)
+			return false;
+
+		if (!(other instanceof Slot))	// se è null potrebbe andare in errore
+			return false;
+
+		Slot otherSlot = (Slot) other;
+		return (this.day == otherSlot.day) && (this.month == otherSlot.month) && (this.year == otherSlot.year) && (this.moment.equals(otherSlot.moment));
 	}
 
+	@Override
 	public int hashCode() {
 		// deve essere non banale
-		return 0;
+		return (day * 100000000) + (month * 1000000) + (year * 10000) + moment.ordinal();	// 10 00 0000 0 - 10 0000 0 - 1000 0 - 1
 	}
 
+	@Override
 	public String toString() { // completo, non modificatelo
 		return day + "/" + month + "/" + year + " " + moment;
 	}
