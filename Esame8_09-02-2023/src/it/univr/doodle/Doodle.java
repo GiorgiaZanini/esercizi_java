@@ -101,7 +101,6 @@ public class Doodle {
 			disponibilita.add(counterDisponibilita);
 		}
 
-
 		for (Integer dispMax : disponibilita) {
 			if (dispMax > max)
 				max = dispMax;
