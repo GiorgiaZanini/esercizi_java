@@ -17,17 +17,18 @@ public final class Tessera<T extends Comparable<T>> implements Comparable<Tesser
 		return other instanceof Tessera && ((Tessera<?>) other).s.equals(s);
 	}
 
-	public int hashCode() {
-		return 0; // modificate: non deve essere banale
+	public int hashCode() {	// modificate: non deve essere banale
+		System.out.println(((Integer) s).toString());	// test per vedere hashCode se è fattibile
+		return (Integer) s;
 	}
 
-	public String toString() {
-		return ""; // modificate (la stampa di una tessera deve essere la stampa del suo valore)
+	public String toString() {	// modificate (la stampa di una tessera deve essere la stampa del suo valore)
+		return s.toString();	// intanto -> vedere se modificare
 	}
 
 	// mettiamo le tessere in ordine rispetto al valore che contengono;
 	// lo possiamo fare perche' abbiamo richiesto i T comparabili fra di loro
-	public int compareTo(Tessera<T> other) {
-		return 0; // modificate
+	public int compareTo(Tessera<T> other) {	// modificate
+		return this.s.compareTo(other.s);
 	}
 }

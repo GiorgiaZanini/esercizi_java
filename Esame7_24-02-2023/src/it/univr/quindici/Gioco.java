@@ -1,6 +1,8 @@
 package it.univr.quindici;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 // un gioco con tessere che contengono valori di tipo T
 public class Gioco<T extends Comparable<T>> {
@@ -21,6 +23,17 @@ public class Gioco<T extends Comparable<T>> {
 		// dovra' avere quindi width * height elementi di cui uno solo a null
 
 		// modificate
+
+		Random random = new Random();
+		int tesseraNull = random.nextInt(width * height);
+		tessere = new ArrayList<>(width * height);
+		for (int i = 0; i < width * height; i++) {
+			if (i == tesseraNull)
+				tessere.add(null);
+				//tessere.set(i, null);
+			else
+				tessere.add(fattoria.get());
+		}
 	}
 
 	// restituisce il gioco come una stringa: non modificate
@@ -43,7 +56,14 @@ public class Gioco<T extends Comparable<T>> {
 	// determina se il gioco e' risolto:
 	// 1) la posizione vuota deve essere in basso a destra, e
 	// 2) le tessere devono essere in ordine crescente (per riga e colonna)
-	public boolean risolto() {
-		return true; // modificate
+	public boolean risolto() {	// modificate
+		if (tessere.get((width * height) - 1) != null)
+			return false;
+
+		for (int i = 0; i < (width * height) - 2; i++) {
+			if (tessere.get(i).compareTo(tessere.get(i + 1)) >= 0)
+				return false;
+		}
+		return true;
 	}
 }
