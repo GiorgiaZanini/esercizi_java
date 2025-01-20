@@ -68,18 +68,13 @@ public class Doodle {
 			result += slot.toString() + "\t";
 
 		// lista disponibilità della persona per ogni slot
-		ArrayList<Integer> disponibilita = new ArrayList<>();	// per passaggio successivo
-		Integer counterDisponibilita;	// per passaggio successivo
-
 		for (Person person : persone) {
-			counterDisponibilita = 0;	// per passaggio successivo
 			result += "\n";
 
 			for (Slot slot : wAll) {
 				result += "\t";
 				if (availabilities.get(person).contains(slot)) {
 					result += "yes";
-					counterDisponibilita += priority(person);
 				} else {
 					result += "no";
 				}
@@ -88,11 +83,25 @@ public class Doodle {
 
 			result = result.trim();
 			result += "\t" + person;
-			disponibilita.add(counterDisponibilita);
 		}
 
 		// conteggi disponibilità, con '*' sulla maggiore
+		ArrayList<Integer> disponibilita = new ArrayList<>();
+		Integer counterDisponibilita;
 		int max = 0;
+
+		for (Slot slot : wAll) {
+			counterDisponibilita = 0;
+
+			for (Person person : persone) {
+				if (availabilities.get(person).contains(slot))
+					counterDisponibilita += priority(person);
+			}
+
+			disponibilita.add(counterDisponibilita);
+		}
+
+
 		for (Integer dispMax : disponibilita) {
 			if (dispMax > max)
 				max = dispMax;
