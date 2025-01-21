@@ -34,6 +34,12 @@ public class Main {
 	 */
 	private static void createLowerCase(String s) {
 		// COMPLETARE
+		try {
+			new LowerCase(s);
+			System.out.println("new LowerCase(" + s + ") => successo");
+		} catch (IllegalArgumentException e) {
+			System.out.println("new LowerCase(" + s + ") => eccezione");
+		}
 	}
 
 	/**
@@ -44,5 +50,11 @@ public class Main {
 	 */
 	private static void createVulcanian(String s) {
 		// COMPLETARE
+		try {
+			new Vulcanian(s);
+			System.out.println("new Vulcanian(" + s + ") => successo");
+		} catch (IllegalArgumentException e) {
+			System.out.println("new Vulcanian(" + s + ") => eccezione");
+		}
 	}
 }
