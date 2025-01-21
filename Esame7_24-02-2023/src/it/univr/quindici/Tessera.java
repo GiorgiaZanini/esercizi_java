@@ -18,8 +18,8 @@ public final class Tessera<T extends Comparable<T>> implements Comparable<Tesser
 	}
 
 	public int hashCode() {	// modificate: non deve essere banale
-		System.out.println(((Integer) s).toString());	// test per vedere hashCode se è fattibile
-		return (Integer) s;
+		//return (Integer) s;
+		return s.hashCode();
 	}
 
 	public String toString() {	// modificate (la stampa di una tessera deve essere la stampa del suo valore)

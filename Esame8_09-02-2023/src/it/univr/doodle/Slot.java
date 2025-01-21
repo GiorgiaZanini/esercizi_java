@@ -56,7 +56,8 @@ public class Slot implements Comparable<Slot> {
 	@Override
 	public int hashCode() {
 		// deve essere non banale
-		return (day * 100000000) + (month * 1000000) + (year * 10000) + moment.ordinal();	// 10 00 0000 0 - 10 0000 0 - 1000 0 - 1
+		//return (day * 100000000) + (month * 1000000) + (year * 10000) + moment.ordinal();	// 10 00 0000 0 - 10 0000 0 - 1000 0 - 1
+		return year ^ month ^ day ^ moment.hashCode();
 	}
 
 	@Override
