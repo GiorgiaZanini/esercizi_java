@@ -1,6 +1,6 @@
 package it.univr.elezioni;
 
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Un oggetto di questa classe permette di registrare voti per dei partiti.
@@ -9,9 +9,17 @@ import java.util.Iterator;
  */
 public class Elezioni implements Iterable<VotiPerPartito> {
 
+	//private SortedSet<Partito> partiti = new TreeSet<>();
+	private Map<Partito, Integer> elezioni = new TreeMap<>();
+
 	// registra un voto per il partito indicato
 	public final void vota(Partito partito) {
 		// completare
+		if (elezioni.get(partito) == null)
+			elezioni.put(partito, 1);
+		else
+			elezioni.put(partito, elezioni.get(partito) + 1);
+		// elezioni.merge(partito, 1, Integer::sum);
 	}
 
 	/**
@@ -28,8 +36,27 @@ public class Elezioni implements Iterable<VotiPerPartito> {
 	   il numero dei voti ottenuti e la percentuale ottenuta fra tutti i voti espressi.
 	 */
 	@Override
-	public String toString() {
-		return ""; // modificare
+	public String toString() {	// modificare
+		float votiTot = 0;
+		for (Partito partito : elezioni.keySet()) {
+			votiTot += elezioni.get(partito);
+		}
+
+		String string = "";
+
+		int i = 1;
+		for (Partito partito : elezioni.keySet()) {
+			string += String.format("%d %15s: %5d voti (%.2f%%)\n", i, partito, elezioni.get(partito), ((100 * elezioni.get(partito)/votiTot)));	//%s -> stringa
+			i++;
+		}
+
+		/*
+		for (int i = 1; i <= elezioni.size(); i++) {
+			string += i + " ".repeat(15 - )
+		}
+		*/
+
+		return string;
 	}
 
     /**
@@ -37,7 +64,18 @@ public class Elezioni implements Iterable<VotiPerPartito> {
      * messe in ordine crescente per partito.
      */
 	@Override
-	public final Iterator<VotiPerPartito> iterator() {
-		return null; // modificare
+	public final Iterator<VotiPerPartito> iterator() {	// modificare
+		SortedSet<VotiPerPartito> set = new TreeSet<VotiPerPartito>(new Comparator<VotiPerPartito>() {
+			@Override
+			public int compare(VotiPerPartito thisVoti, VotiPerPartito otherVoti) {
+				return thisVoti.partito.compareTo(otherVoti.partito);
+			}
+		});
+
+		for (Partito partito : elezioni.keySet()) {
+			set.add(new VotiPerPartito(partito, elezioni.get(partito)));
+		}
+
+		return set.iterator();
 	}
 }
