@@ -8,7 +8,15 @@ package it.univr.dadi;
  */
 public class LanciBarreDiverse extends Lanci {
 
+	private String[] simboli = {"*", "@", "+"};
+
 	public LanciBarreDiverse(int quanti, Dado... dadi) {
 		// completare
+		super(quanti, dadi);
+	}
+
+	protected String barra(int i, double frequenza) {
+		i = i % 3;
+		return simboli[i].repeat((int) frequenza);
 	}
 }
