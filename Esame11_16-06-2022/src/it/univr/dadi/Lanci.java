@@ -28,7 +28,7 @@ public class Lanci {
 	public Lanci(int quanti, Dado... dadi) {
 		// completare
 
-		// numero dadi da lanciare
+		// numero numero dadi da lanciare
 		if (dadi.length == 0)
 			throw new IllegalArgumentException("non sono stati forniti dadi da lanciare");
 		this.dadi = dadi;
@@ -85,7 +85,7 @@ public class Lanci {
 		// toString
 		String string = "";
 		float percentuale;
-		for (int i = 0; i < risultatoMax; i++) {
+		for (int i = dadi.length-1; i < risultatoMax; i++) {
 			percentuale = (100 * (float) occorrenze(i+1) / risultati.length);
 			//System.out.println(String.format("%f = (100 * %d / %d)", percentuale, occorrenze(i+1), risultati.length));
 			string += String.format("%3s: ", i+1) + barra(i, percentuale) + String.format(" (%.1f%%)\n", percentuale);
