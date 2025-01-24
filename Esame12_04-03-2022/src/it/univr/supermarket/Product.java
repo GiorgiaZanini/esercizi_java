@@ -27,11 +27,13 @@ public abstract class Product implements Comparable<Product> {
 	 * @param price il prezzo in euro del prodotto
 	 * @throws IllegalArgumentException se name e' null oppure vuoto oppure price e' negativo
 	 */
-	protected Product(String name, double price) {
+	protected Product(String name, double price) {	// TODO
+		if (name == null || name.isEmpty())
+			throw new IllegalArgumentException("nessun nome passato");
 		this.name = name;
+		if (price < 0)
+			throw new IllegalArgumentException("il prezzo non può essere negativo");
 		this.price = price;
-		
-		// TODO
 	}
 
 	@Override
@@ -52,16 +54,20 @@ public abstract class Product implements Comparable<Product> {
 	 * Due prodotti sono equals se hanno stesso nome, stesso prezzo e stesso momento di scadenza.
 	 */
 	@Override
-	public final boolean equals(Object other) {
-		return true; // TODO
+	public final boolean equals(Object other) {	// TODO
+		if (!(other instanceof Product))
+			return false;
+
+		Product otherProduct = (Product) other;
+		return (this.name.equals(otherProduct.name)) && (this.price == otherProduct.price) && (this.compareExpiration(otherProduct) == 0);
 	}
 
 	/**
 	 * Non deve essere banale.
 	 */
 	@Override
-	public final int hashCode() {
-		return 0; // TODO
+	public final int hashCode() {	// TODO
+		return name.hashCode() ^ (int) price;
 	}
 
 	/**
@@ -77,8 +83,10 @@ public abstract class Product implements Comparable<Product> {
 	 *
 	 * @param whenChecked il momento indicato (in millisecondi da 1/1/1970)
 	 */
-	public final boolean expiresInSubsequent24Hours(long whenChecked) {
-		return true; // TODO
+	public final boolean expiresInSubsequent24Hours(long whenChecked) {	// TODO
+		if (!hasExpired(whenChecked))
+			return hasExpired(whenChecked + _24_HOURS);
+		return false;
 	}
 
 	/**
@@ -96,8 +104,13 @@ public abstract class Product implements Comparable<Product> {
 	 * @param whenChecked il momento in cui si chiede di controllare il prezzo (in millisecondi da 1/1/1970)
 	 * @return il prezzo del prodotto, possibilmente scontato
 	 */
-	public final double getPrice(long whenChecked) {
-		return 0.0; // TODO
+	public final double getPrice(long whenChecked) {	// TODO
+		if (hasExpired(whenChecked))
+			return -1;
+		if (expiresInSubsequent24Hours(whenChecked))
+			return (60 * price) / 100;
+		return getPrice();
+		//return price;
 	}
 
 	/**
@@ -107,6 +120,12 @@ public abstract class Product implements Comparable<Product> {
 	 */
 	@Override
 	public final int compareTo(Product other) {
-		return 0; // TODO
+		if (this.compareExpiration(other) == 0) {
+			if (this.name.equals(other.name))
+				Double.compare(this.price, other.price);
+			else
+				this.name.compareTo(other.name);
+		}
+		return this.compareExpiration(other);
 	}
 }

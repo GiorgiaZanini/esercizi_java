@@ -1,17 +1,23 @@
 package it.univr.supermarket;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 /**
  * Un supermercato, cioe' un contenitore di prodotti.
  */
 public class Supermarket {
 	// TODO: campi?
+	private SortedSet<Product> products = new TreeSet<>();
 
 	/**
 	 * Aggiunge i prodotti indicati a questo supermercato.
 	 * Se ci fossero ripetizioni (cioe' due prodotti equals), li aggiunge una volta sola.
 	 */
-	public void add(Product... products) {
-		// TODO
+	public void add(Product... products) {	// TODO
+		this.products.addAll(List.of(products));
 	}
 
 	/**
@@ -20,9 +26,8 @@ public class Supermarket {
 	 * come momento in cui creare la descrizione del supermercato.
 	 */
 	@Override
-	public String toString() {
-		// TODO
-		return "";
+	public String toString() {	// TODO
+		return toString(System.currentTimeMillis());
 	}
 
 	/**
@@ -41,6 +46,22 @@ public class Supermarket {
 	 */
 	public String toString(long when) {
 		// TODO
-		return "";
+		String string = "";
+
+		for (Product product : products) {
+			string += product.toString() + ": ";
+
+			if (product.hasExpired(when))
+				string += "expired";
+			else {
+				string += String.format("%.2f euros", product.getPrice(when));
+				if (product.expiresInSubsequent24Hours(when))
+					string += " (special offer)";
+			}
+
+			string += "\n";
+		}
+
+		return string;
 	}
 }

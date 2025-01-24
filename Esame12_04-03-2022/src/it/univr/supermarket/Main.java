@@ -48,5 +48,8 @@ public class Main {
 	 */
 	private static void printOneWeek(Supermarket sm, long start) {
 		// TODO
+		for (int i = 0; i < 7; i++) {
+			System.out.println(sm.toString(start + i));
+		}
 	}
 }
