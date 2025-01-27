@@ -37,7 +37,7 @@ public class CamelStyleIdentifier extends MultiWordIdentifier {
 	// sono la concatenazione delle parole degli ids
 	public CamelStyleIdentifier(MultiWordIdentifier... ids) {
 		// TODO
-		MultiWordIdentifier.concat(ids);
+		super(MultiWordIdentifier.concat(ids));
 	}
 
 	// restituisce un identificatore snake-style con le stesse parole di this

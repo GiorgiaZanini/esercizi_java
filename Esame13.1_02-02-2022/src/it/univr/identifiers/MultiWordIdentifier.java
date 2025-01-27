@@ -28,8 +28,11 @@ public abstract class MultiWordIdentifier implements Identifier {
 	// fallisce con un'eccezione nelle stesse condizioni viste sopra
 	protected MultiWordIdentifier(Iterable<String> words) throws IllegalArgumentException {
 		// TODO
+		/*
 		if (words == null || words.iterator().hasNext())
 			throw new IllegalArgumentException();
+
+		*/
 
 		this.words = new ArrayList<>();
 		Iterator<String> iterator = words.iterator();
@@ -55,7 +58,7 @@ public abstract class MultiWordIdentifier implements Identifier {
 		String string = "";
 
 		for (String word : words)
-			string += toString(word.indexOf(word), word);
+			string += toString(words.indexOf(word), word);
 
 		return string;
 	}
@@ -66,9 +69,10 @@ public abstract class MultiWordIdentifier implements Identifier {
 	// restituisce la concatenazione delle parole degli identificatori indicati
 	protected static List<String> concat(MultiWordIdentifier... ids) {
 		// TODO
-		List<String> list = new LinkedList<>();
-		for (MultiWordIdentifier identifier : ids)
-			list.add(identifier.toString());
+		List<String> list = new ArrayList<>();
+		for (MultiWordIdentifier identifier : ids) {
+            list.addAll(identifier.words);
+		}
 		return list;
 	}
 
