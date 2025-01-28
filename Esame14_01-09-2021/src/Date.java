@@ -9,11 +9,7 @@ import java.util.Random;
  * Quindi i suoi oggetti sono immutabili.
  */
 public class Date {
-<<<<<<< Updated upstream
 	
-=======
-
->>>>>>> Stashed changes
 	/**
 	 * Il giorno della data.
 	 */
