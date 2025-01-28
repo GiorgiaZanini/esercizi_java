@@ -3,6 +3,7 @@
 package it.univr.dates;
 
 import java.util.Iterator;
+import java.util.Random;
 
 public interface Dates extends Iterable<Date> {
 
@@ -48,7 +49,28 @@ public interface Dates extends Iterable<Date> {
 	 */
 	public static Dates from(int year) {
 		// COMPLETATE
-		return null;
+		return new Dates() {
+
+			@Override
+			public Iterator<Date> iterator() {
+				return new Iterator<Date>() {
+					private Date cursor = new Date(1, 1, year);
+
+					@Override
+					public boolean hasNext() {
+						return true;
+					}
+
+					@Override
+					public Date next() {
+						Date result = cursor;
+						cursor = cursor.next();
+						return result;
+					}
+				};
+			}
+
+		};
 	}
 
 	/**
@@ -60,7 +82,27 @@ public interface Dates extends Iterable<Date> {
 	 */
 	public static Dates random(int howMany) {
 		// COMPLETATE
-		return null;
+		return new Dates() {
+
+			@Override
+			public Iterator<Date> iterator() {
+				return new Iterator<Date>() {
+					final Random random = new Random();
+					int counter = howMany;
+
+					@Override
+					public boolean hasNext() {
+						counter--;
+						return counter > 0;
+					}
+
+					@Override
+					public Date next() {
+						return new Date(random.nextInt(101) + 2000);
+					}
+				};
+			}
+		};
 	}
 
 	/**
