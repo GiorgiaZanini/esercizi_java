@@ -28,12 +28,13 @@ public class SnakeStyleIdentifier extends MultiWordIdentifier {
 	// sono la concatenazione delle parole degli ids
 	public SnakeStyleIdentifier(MultiWordIdentifier... ids) {
 		// TODO
-		MultiWordIdentifier.concat(ids);
+		super(concat(ids));
+		//MultiWordIdentifier.concat(ids);
 	}
 
 	// restituisce un identificatore camel-style con le stesse parole di this
 	public CamelStyleIdentifier toCamelStyle() {
 		// TODO
-		return null;
+		return new CamelStyleIdentifier(this);
 	}
 }

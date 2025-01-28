@@ -9,7 +9,8 @@ import java.util.List;
 public abstract class MultiWordIdentifier implements Identifier {
 
 	// TODO
-	private ArrayList<String> words;
+	private final ArrayList<String> words;
+	private final static String lettere = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	// fallisce con una IllegalArgumentException se non c'e' nessuna parola
 	// o se c'e' una parola null oppure vuota
@@ -21,6 +22,10 @@ public abstract class MultiWordIdentifier implements Identifier {
         for (String word : words) {
             if (word == null || word.isEmpty())
                 throw new IllegalArgumentException();
+			for (int i = 0; i < word.length(); i++) {
+				if (!(lettere.contains(((Character) word.charAt(i)).toString())))
+					throw new IllegalArgumentException();
+			}
         }
 		this.words = new ArrayList<>(List.of(words));
 	}
@@ -57,8 +62,13 @@ public abstract class MultiWordIdentifier implements Identifier {
 		// e si concateni il risultato in un'unica stringa
 		String string = "";
 
+		/*
 		for (String word : words)
 			string += toString(words.indexOf(word), word);
+		 */
+		for (int i = 0; i < words.size(); i++) {
+			string += toString(i, words.get(i));
+		}
 
 		return string;
 	}
