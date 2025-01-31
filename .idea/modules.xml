@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Desktop.iml" filepath="$PROJECT_DIR$/Desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame10_05-07-2022/Esame10_05-07-2022.iml" filepath="$PROJECT_DIR$/Esame10_05-07-2022/Esame10_05-07-2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame11_16-06-2022/Esame11_16-06-2022.iml" filepath="$PROJECT_DIR$/Esame11_16-06-2022/Esame11_16-06-2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame12_04-03-2022/Esame12_04-03-2022.iml" filepath="$PROJECT_DIR$/Esame12_04-03-2022/Esame12_04-03-2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame13.1_02-02-2022/Esame13.1_02-02-2022.iml" filepath="$PROJECT_DIR$/Esame13.1_02-02-2022/Esame13.1_02-02-2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame1_13-09-2024/Esame1_13-09-2024.iml" filepath="$PROJECT_DIR$/Esame1_13-09-2024/Esame1_13-09-2024.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame2_20-06-2024/Esame2_20-06-2024.iml" filepath="$PROJECT_DIR$/Esame2_20-06-2024/Esame2_20-06-2024.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame3_16-02-2024/Esame3_16-02-2024.iml" filepath="$PROJECT_DIR$/Esame3_16-02-2024/Esame3_16-02-2024.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame4_01-02-2024/Esame4_01-02-2024.iml" filepath="$PROJECT_DIR$/Esame4_01-02-2024/Esame4_01-02-2024.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame5_29-09-2023/Esame5_29-09-2023.iml" filepath="$PROJECT_DIR$/Esame5_29-09-2023/Esame5_29-09-2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame6_05-07-2023/Esame6_05-07-2023.iml" filepath="$PROJECT_DIR$/Esame6_05-07-2023/Esame6_05-07-2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame7_24-02-2023/Esame7_24-02-2023.iml" filepath="$PROJECT_DIR$/Esame7_24-02-2023/Esame7_24-02-2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame8_09-02-2023/Esame8_09-02-2023.iml" filepath="$PROJECT_DIR$/Esame8_09-02-2023/Esame8_09-02-2023.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Esame9_02-09-2022/Esame9_02-09-2022.iml" filepath="$PROJECT_DIR$/Esame9_02-09-2022/Esame9_02-09-2022.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab1_18-10/Lab1_18-10.iml" filepath="$PROJECT_DIR$/Lab1_18-10/Lab1_18-10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab2_25-10/Lab2_25-10.iml" filepath="$PROJECT_DIR$/Lab2_25-10/Lab2_25-10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab3_8-11/Lab3_8-11.iml" filepath="$PROJECT_DIR$/Lab3_8-11/Lab3_8-11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab4_15-11/Lab4_15-11.iml" filepath="$PROJECT_DIR$/Lab4_15-11/Lab4_15-11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab5_22-11/Lab5_22-11.iml" filepath="$PROJECT_DIR$/Lab5_22-11/Lab5_22-11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab6_06-12/Lab6_06-12.iml" filepath="$PROJECT_DIR$/Lab6_06-12/Lab6_06-12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab7_10-12/Lab7_10-12.iml" filepath="$PROJECT_DIR$/Lab7_10-12/Lab7_10-12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab8_18-12/Lab8_18-12.iml" filepath="$PROJECT_DIR$/Lab8_18-12/Lab8_18-12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lab9_20-12/Lab9_20-12.iml" filepath="$PROJECT_DIR$/Lab9_20-12/Lab9_20-12.iml" />
+    </modules>
+  </component>
+</project>
