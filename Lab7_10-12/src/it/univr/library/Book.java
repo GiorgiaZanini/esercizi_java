@@ -23,17 +23,17 @@ public abstract class Book implements Comparable<Book> {
 	 */
 	protected Book(String title, String author, int year, Genre genre) {
 		try {
-			if (!(title.equals(null)))
+			if (title != null)
 				this.title = title;
 
-			if (!(author.equals(null)))
+			if (author != null)
 				this.author = author;
 
 			if (year < 0)
 				throw new IllegalArgumentException();
 			this.year = year;
 
-			if (!(genre.equals(null)))
+			if (genre != null)
 				this.genre = genre;
 
 		} catch (NullPointerException e) {

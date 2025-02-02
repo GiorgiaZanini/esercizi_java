@@ -50,12 +50,6 @@ public class Elezioni implements Iterable<VotiPerPartito> {
 			i++;
 		}
 
-		/*
-		for (int i = 1; i <= elezioni.size(); i++) {
-			string += i + " ".repeat(15 - )
-		}
-		*/
-
 		return string;
 	}
 

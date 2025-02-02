@@ -3,7 +3,8 @@ import java.util.Objects;
 
 public class Calendar implements Iterable<Calendar.Date> {
     private final int year; // l'anno del calendario
-    //private static final int[] daysForMonth = {30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30}; // ogni cella contiene il numero massimo di giorni per ogni mese, ridotto di 1 (anno non bisestile)
+    //private static final int[] daysForMonth = {30, 27, 30, 29, 30, 29, 30, 30, 29, 30, 29, 30};
+    // ogni cella contiene il numero massimo di giorni per ogni mese, ridotto di 1 (anno non bisestile)
     private static final int[] daysForMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     // costruisce il calendario per l'anno indicato

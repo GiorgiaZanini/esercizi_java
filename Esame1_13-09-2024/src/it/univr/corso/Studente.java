@@ -71,7 +71,7 @@ public class Studente implements Comparable<Studente> {
 	 */
 	@Override
 	public int hashCode() {
-		return matricola;
+		return Integer.hashCode(matricola);
 	}
 
 	/**

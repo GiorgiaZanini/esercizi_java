@@ -71,41 +71,11 @@ public class Esame {
 	@Override
 	public String toString() {
 		String allStudents = "Esame di " + nome_esame + " del corso di " + corso.getNome() + ":\n";
-		//String fuoriCorso = "Matricole degli studenti fuori corso:\n";
-		//String lavoratori = "Studenti lavoratori:\n";
-
+		
 		for (Studente s : iscritti) {
 			allStudents += s.toString() + "\n";
-
-			/*
-			if (s instanceof StudenteLavoratore) {
-				lavoratori += s.toString() + "\n";
-				if (((StudenteLavoratore) s).fuoriCorso(corso))
-					fuoriCorso += s.getMatricola() + "\n";
-			} else {
-				if (s.fuoriCorso(corso))
-					fuoriCorso += s.getMatricola() + "\n";
-			}
-			 */
 		}
 
-		/*
-		if (allStudents.equals("Esame di " + nome_esame + " del corso di " + corso.getNome() + ":\n")) {
-			allStudents += "-\n";
-			fuoriCorso += "-\n";
-			lavoratori += "-";
-			return allStudents + fuoriCorso + lavoratori;
-		} else {
-			if (fuoriCorso.equals("Matricole degli studenti fuori corso:\n")) {
-				fuoriCorso += "-\n";
-			}
-			if (lavoratori.equals("Studenti lavoratori:\n")) {
-				lavoratori += "-\n";
-			}
-		}
-		 */
-
-		//return (allStudents + fuoriCorso + lavoratori).trim();
 		return allStudents.trim();
 	}
 
