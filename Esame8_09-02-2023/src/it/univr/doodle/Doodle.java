@@ -29,20 +29,21 @@ public class Doodle {
 	public void available(Person person, Iterable<Slot> when) {
 		//
 		//Set<Slot> w = new TreeSet<>();
+		Iterator<Slot> iterator = when.iterator();
 
 		if (availabilities.get(person) == null) {
 			Set<Slot> w = new TreeSet<>();
 
-			while (when.iterator().hasNext())
-				w.add(when.iterator().next());
+			while (iterator.hasNext())
+				w.add(iterator.next());
 
 			availabilities.put(person, w);
 		} else {
 			//w = availabilities.get(person);
-			while (when.iterator().hasNext())
-				//w.add(when.iterator().next());
-				availabilities.get(person).add(when.iterator().next());	// get -> restituidce puntatore al Set,
-																		// 		  aggiorno il Set che stà gia nella mappa
+			while (iterator.hasNext())
+				//w.add(iterator.next());
+				availabilities.get(person).add(iterator.next());	// get -> restituidce puntatore al Set,
+																	// 		  aggiorno il Set che stà gia nella mappa
 
 			//availabilities.put(person, w);
 		}
